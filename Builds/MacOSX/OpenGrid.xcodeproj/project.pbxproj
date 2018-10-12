@@ -14,8 +14,11 @@
 		1D8DA5866C7FDE77B8A2591E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF1CB4CFDD43BAD172757AE /* AudioToolbox.framework */; };
 		20266BEEF92D3E7D04868146 /* include_juce_audio_processors.mm in Sources */ = {isa = PBXBuildFile; fileRef = DBCAEF470B72E9F3E2B51B9A /* include_juce_audio_processors.mm */; };
 		26C3661B67001F16D9585C61 /* include_juce_gui_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2CC34271D60D8213756A2343 /* include_juce_gui_basics.mm */; };
-		47E9F38E216FD22B0075F3E5 /* Pad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47E9F38A216FD22B0075F3E5 /* Pad.cpp */; };
-		47E9F38F216FD22B0075F3E5 /* PadGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47E9F38C216FD22B0075F3E5 /* PadGrid.cpp */; };
+		47E9F395216FE23B0075F3E5 /* Pad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47E9F391216FE23B0075F3E5 /* Pad.cpp */; };
+		47E9F396216FE23B0075F3E5 /* PadGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47E9F393216FE23B0075F3E5 /* PadGrid.cpp */; };
+		47E9F39B216FE4FF0075F3E5 /* ControllerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47E9F399216FE4FF0075F3E5 /* ControllerBase.cpp */; };
+		47E9F39E216FE73C0075F3E5 /* GridModelMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47E9F39C216FE73C0075F3E5 /* GridModelMap.cpp */; };
+		47E9F3A1216FE7F90075F3E5 /* IODevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47E9F39F216FE7F90075F3E5 /* IODevice.cpp */; };
 		4961A2E6C8710203463103F0 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1F2857122B6CEA27658369 /* WebKit.framework */; };
 		502C356FF64D126C2186D934 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA63523A6EB18461FEB9A138 /* Cocoa.framework */; };
 		58208722D4975EE215ACD216 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 597E7557C9B8EE8F95EF991D /* Main.cpp */; };
@@ -54,10 +57,16 @@
 		2E1F2857122B6CEA27658369 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		31A25F50719441C9E6B8AF9A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4320668E792BD5B9449A9053 /* include_juce_graphics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_graphics.mm; path = ../../JuceLibraryCode/include_juce_graphics.mm; sourceTree = SOURCE_ROOT; };
-		47E9F38A216FD22B0075F3E5 /* Pad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pad.cpp; sourceTree = "<group>"; };
-		47E9F38B216FD22B0075F3E5 /* Pad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pad.h; sourceTree = "<group>"; };
-		47E9F38C216FD22B0075F3E5 /* PadGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PadGrid.cpp; sourceTree = "<group>"; };
-		47E9F38D216FD22B0075F3E5 /* PadGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadGrid.h; sourceTree = "<group>"; };
+		47E9F391216FE23B0075F3E5 /* Pad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pad.cpp; sourceTree = "<group>"; };
+		47E9F392216FE23B0075F3E5 /* Pad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pad.h; sourceTree = "<group>"; };
+		47E9F393216FE23B0075F3E5 /* PadGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PadGrid.cpp; sourceTree = "<group>"; };
+		47E9F394216FE23B0075F3E5 /* PadGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadGrid.h; sourceTree = "<group>"; };
+		47E9F399216FE4FF0075F3E5 /* ControllerBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControllerBase.cpp; sourceTree = "<group>"; };
+		47E9F39A216FE4FF0075F3E5 /* ControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerBase.h; sourceTree = "<group>"; };
+		47E9F39C216FE73C0075F3E5 /* GridModelMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridModelMap.cpp; sourceTree = "<group>"; };
+		47E9F39D216FE73C0075F3E5 /* GridModelMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridModelMap.h; sourceTree = "<group>"; };
+		47E9F39F216FE7F90075F3E5 /* IODevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IODevice.cpp; sourceTree = "<group>"; };
+		47E9F3A0216FE7F90075F3E5 /* IODevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IODevice.h; sourceTree = "<group>"; };
 		49F70C57F48BD5ACE29A2ACE /* include_juce_opengl.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_opengl.mm; path = ../../JuceLibraryCode/include_juce_opengl.mm; sourceTree = SOURCE_ROOT; };
 		4C42065B901CCA88AA74A293 /* juce_graphics */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_graphics; path = "~/JUCE/modules/juce_graphics"; sourceTree = "<absolute>"; };
 		4E2B9D3822ED8D7EDCE99D35 /* juce_core */ = {isa = PBXFileReference; lastKnownFileType = text; name = juce_core; path = "~/JUCE/modules/juce_core"; sourceTree = "<absolute>"; };
@@ -124,10 +133,9 @@
 				F138A71AB6E339F3FDBF7D92 /* MainComponent.cpp */,
 				7B34FAF0EC64CE84B9BF62AD /* MainComponent.h */,
 				597E7557C9B8EE8F95EF991D /* Main.cpp */,
-				47E9F38A216FD22B0075F3E5 /* Pad.cpp */,
-				47E9F38B216FD22B0075F3E5 /* Pad.h */,
-				47E9F38C216FD22B0075F3E5 /* PadGrid.cpp */,
-				47E9F38D216FD22B0075F3E5 /* PadGrid.h */,
+				47E9F398216FE4F20075F3E5 /* Controllers */,
+				47E9F390216FE23B0075F3E5 /* GUI */,
+				47E9F397216FE2740075F3E5 /* Model */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -160,6 +168,40 @@
 				2D0CCDCF0ACB7580272187D3 /* JuceHeader.h */,
 			);
 			name = "Juce Library Code";
+			sourceTree = "<group>";
+		};
+		47E9F390216FE23B0075F3E5 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				47E9F391216FE23B0075F3E5 /* Pad.cpp */,
+				47E9F392216FE23B0075F3E5 /* Pad.h */,
+				47E9F393216FE23B0075F3E5 /* PadGrid.cpp */,
+				47E9F394216FE23B0075F3E5 /* PadGrid.h */,
+			);
+			name = GUI;
+			path = ../../Source/GUI;
+			sourceTree = "<group>";
+		};
+		47E9F397216FE2740075F3E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47E9F39D216FE73C0075F3E5 /* GridModelMap.h */,
+				47E9F39C216FE73C0075F3E5 /* GridModelMap.cpp */,
+				47E9F3A0216FE7F90075F3E5 /* IODevice.h */,
+				47E9F39F216FE7F90075F3E5 /* IODevice.cpp */,
+			);
+			name = Model;
+			path = ../../Source/Model;
+			sourceTree = "<group>";
+		};
+		47E9F398216FE4F20075F3E5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				47E9F39A216FE4FF0075F3E5 /* ControllerBase.h */,
+				47E9F399216FE4FF0075F3E5 /* ControllerBase.cpp */,
+			);
+			name = Controllers;
+			path = ../../Source/Controllers;
 			sourceTree = "<group>";
 		};
 		52410543990BC51E43FDD406 /* Frameworks */ = {
@@ -314,11 +356,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				90F7B53A89A95A65F64787EC /* MainComponent.cpp in Sources */,
+				47E9F39E216FE73C0075F3E5 /* GridModelMap.cpp in Sources */,
 				58208722D4975EE215ACD216 /* Main.cpp in Sources */,
 				977A3C46A9B6428963FDF54C /* include_juce_audio_basics.mm in Sources */,
 				87CF6CE9BA26D51511407915 /* include_juce_audio_devices.mm in Sources */,
 				C0CC08FDDE3C838E169328DD /* include_juce_audio_formats.mm in Sources */,
 				20266BEEF92D3E7D04868146 /* include_juce_audio_processors.mm in Sources */,
+				47E9F39B216FE4FF0075F3E5 /* ControllerBase.cpp in Sources */,
 				A53C840DECB1826AA6BBAA47 /* include_juce_core.mm in Sources */,
 				FF695B18F06BD81DDFEBF328 /* include_juce_cryptography.mm in Sources */,
 				03CCFA6FF460E7C41904C9B3 /* include_juce_data_structures.mm in Sources */,
@@ -326,10 +370,11 @@
 				A1D07535D3BF409DDF312062 /* include_juce_graphics.mm in Sources */,
 				26C3661B67001F16D9585C61 /* include_juce_gui_basics.mm in Sources */,
 				926790115C55488C360B0EB3 /* include_juce_gui_extra.mm in Sources */,
-				47E9F38E216FD22B0075F3E5 /* Pad.cpp in Sources */,
+				47E9F395216FE23B0075F3E5 /* Pad.cpp in Sources */,
 				7AC87965F1D7B0EC9B9BC30A /* include_juce_opengl.mm in Sources */,
+				47E9F3A1216FE7F90075F3E5 /* IODevice.cpp in Sources */,
 				60E9757BA1F5B3CB4B896A79 /* include_juce_video.mm in Sources */,
-				47E9F38F216FD22B0075F3E5 /* PadGrid.cpp in Sources */,
+				47E9F396216FE23B0075F3E5 /* PadGrid.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
