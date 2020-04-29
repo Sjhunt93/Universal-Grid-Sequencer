@@ -17,7 +17,10 @@ class GridModelMap {
 public:
     //this map defines the coordinate map between device and
     
-    struct Pad {
+    /*
+     This is just a container of data..
+     */
+    struct PadModel {
 //        Pad (const int _x, const int _y, bool isActive) : x(_x), y(_y), active(isActive)
 //        {
 //            device = nullptr;
@@ -35,20 +38,20 @@ public:
         int x;
         int y;
         bool active;
-
+        
         
         IODevice * device; //correspond device
         Pad * pad; //GUI object.
         ControllerBase * controller;
     };
     struct Row {
-        std::vector<Pad> pads;
+        std::vector<PadModel> pads;
     };
     
     
     
     
-    GridModelMap (XY size)
+    GridModelMap (XY size) : gridSize(size)
     {
         grid.resize(size.y);
         for (int y = 0; y < grid.size(); y++) {
@@ -71,10 +74,15 @@ public:
         }
     }
     
+    PadModel * getPad (const int x, const int y);
+    PadModel * getPad (const int index);
     
+    bool isOutsideGrid (const int x, const int y);
+    
+    
+    const XY gridSize;
 private:
     std::vector<Row> grid;
-    
 };
 
 #endif /* defined(__OpenGrid__GridModelMap__) */

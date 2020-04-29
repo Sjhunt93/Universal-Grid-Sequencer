@@ -10,9 +10,9 @@
 
 
 //==============================================================================
-MainContentComponent::MainContentComponent()
+MainContentComponent::MainContentComponent() : modelMap({9,9})
 {
-    
+    pg = new PadGrid(&modelMap);
     addAndMakeVisible(pg);
     
     addAndMakeVisible(t);
@@ -38,7 +38,7 @@ void MainContentComponent::resized()
     // This is called when the MainContentComponent is resized.
     // If you add any child components, this is where you should
     // update their positions.
-    pg.setBounds(10, 10, getWidth() * 0.48, getHeight() * 0.48);
+    pg->setBounds(10, 10, getWidth() * 0.48, getHeight() * 0.48);
     
     t.setBounds(getWidth() * 0.5 + 50, 50, 50, 50);
 }

@@ -38,7 +38,7 @@ void Pad::itemDragEnter (const SourceDetails& dragSourceDetails)
 {
     col = Colours::orange;
     repaint();
-    listner.doSomething(x, y, dragSourceDetails.description.getArray());
+    listner.objectDropped(x, y, *dragSourceDetails.description.getArray(), Listner::eDropType::eTest);
 }
 void Pad::itemDragMove (const SourceDetails& dragSourceDetails)
 {
@@ -51,5 +51,5 @@ void Pad::itemDragExit (const SourceDetails& dragSourceDetails)
 }
 void Pad::itemDropped (const SourceDetails& dragSourceDetails)
 {
-    
+    listner.objectDropped(x, y, *dragSourceDetails.description.getArray(), Listner::eDropType::eDrop);
 }

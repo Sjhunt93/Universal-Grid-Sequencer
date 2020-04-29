@@ -44,8 +44,8 @@ public:
     };
     
     
-    ControllerBase ();
-    virtual ~ControllerBase ();
+    ControllerBase () {}
+    virtual ~ControllerBase () {}
     
     //eventuall this will get replaced by a clock object..
     virtual void clockInput (const int step, const int clock) {}

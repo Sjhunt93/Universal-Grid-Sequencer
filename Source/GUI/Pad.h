@@ -19,8 +19,14 @@ public:
     class Listner
     {
     public:
+        enum eDropType {
+            eNone = 0,
+            eTest,
+            eDrop,
+        };
+        
         virtual ~Listner() {}
-        virtual void doSomething (int x, int y, Array<var> * data) = 0;
+        virtual void objectDropped (const int x, const int y, Array<var> data, const eDropType type) = 0;
     };
     
     

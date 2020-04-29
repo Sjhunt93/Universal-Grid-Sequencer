@@ -57,6 +57,7 @@
 		2E1F2857122B6CEA27658369 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		31A25F50719441C9E6B8AF9A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4320668E792BD5B9449A9053 /* include_juce_graphics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_graphics.mm; path = ../../JuceLibraryCode/include_juce_graphics.mm; sourceTree = SOURCE_ROOT; };
+		47119E1A245994F000D9E457 /* plan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = plan.h; path = ../../Source/plan.h; sourceTree = "<group>"; };
 		47E9F391216FE23B0075F3E5 /* Pad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pad.cpp; sourceTree = "<group>"; };
 		47E9F392216FE23B0075F3E5 /* Pad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pad.h; sourceTree = "<group>"; };
 		47E9F393216FE23B0075F3E5 /* PadGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PadGrid.cpp; sourceTree = "<group>"; };
@@ -130,9 +131,10 @@
 		25CE95A574E335CB68DBE9E4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				F138A71AB6E339F3FDBF7D92 /* MainComponent.cpp */,
 				7B34FAF0EC64CE84B9BF62AD /* MainComponent.h */,
+				F138A71AB6E339F3FDBF7D92 /* MainComponent.cpp */,
 				597E7557C9B8EE8F95EF991D /* Main.cpp */,
+				47119E1A245994F000D9E457 /* plan.h */,
 				47E9F398216FE4F20075F3E5 /* Controllers */,
 				47E9F390216FE23B0075F3E5 /* GUI */,
 				47E9F397216FE2740075F3E5 /* Model */,
@@ -204,6 +206,14 @@
 			path = ../../Source/Controllers;
 			sourceTree = "<group>";
 		};
+		47F423592173D1C8000C8FBD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Data;
+			path = ../../Source/Data;
+			sourceTree = "<group>";
+		};
 		52410543990BC51E43FDD406 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +279,7 @@
 		D01A5DEA8BB244C84D7D0A5F /* OpenGrid */ = {
 			isa = PBXGroup;
 			children = (
+				47F423592173D1C8000C8FBD /* Data */,
 				25CE95A574E335CB68DBE9E4 /* Source */,
 			);
 			name = OpenGrid;

@@ -11,16 +11,37 @@
 
 PadGrid::PadGrid ()
 {
-    for (int i = 0; i < 64; i++) {
-        pads.push_back(new Pad(*this));
-        addAndMakeVisible(pads[i]);
-        pads[i]->x = i % 8;
-        pads[i]->y = i / 8;
+//    for (int i = 0; i < 64; i++) {
+//        pads.push_back(new Pad(*this));
+//        addAndMakeVisible(pads[i]);
+//        pads[i]->x = i % 8;
+//        pads[i]->y = i / 8;
+//    }
+}
+
+PadGrid::PadGrid (GridModelMap * map)
+{
+    modelMap = map;
+    
+    for (int y = 0; y < modelMap->gridSize.y; y++) {
+        for (int x = 0; x < modelMap->gridSize.x; x++) {
+        
+            pads.push_back(new Pad(*this));
+            const int index = pads.size()-1;
+            addAndMakeVisible(pads[index]);
+            pads[index]->x = x;
+            pads[index]->y = y;
+            
+            GridModelMap::PadModel * pad = modelMap->getPad(x, y);
+            pad->pad = pads[index];
+        }
     }
 }
 PadGrid::~PadGrid ()
 {
-    
+    for (int i = 0; i < pads.size(); i++) {
+        delete pads[i];
+    }
 }
 
 void PadGrid::paint (Graphics & g)
@@ -29,43 +50,55 @@ void PadGrid::paint (Graphics & g)
 }
 void PadGrid::resized ()
 {
-    
-    const float w = getWidth() / 8.0;
-    const float h = getHeight() / 8.0;
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
+    XY xy = modelMap->gridSize;
+    const float w = getWidth() / xy.x;
+    const float h = getHeight() / xy.y;
+    for (int i = 0; i < xy.x; i++) {
+        for (int j = 0; j < xy.y; j++) {
             //pads[j+i*8]->setBounds(j*w, h*i, w * 0.95, h * 0.95);
-            pads[j+i*8]->setBounds(j*w, h*i, w, h);
+            pads[i+j*xy.y]->setBounds(i*w, j*h, w, h);
         }
         
     }
     
 }
 
-void PadGrid::doSomething (int xIn, int yIn, Array<var> * data)
+
+void PadGrid::objectDropped (const int xIn, const int yIn, Array<var> data, const Pad::Listner::eDropType type)
 {
-    for (int i = 0; i < 64; i++) {
-        pads[i]->col = Colours::green;
+    for (int i = 0; i < pads.size(); i++) {
+        
+//        pads[i]->col = Colours::blue;
+        // we will enter a que messsage here, to do the actual update..
+        //async update.
+        
+        
+        pads[i]->col = modelMap->getPad(i)->controller == nullptr ? Colours::green : Colours::blue;
     }
 
     std::vector<int> tpUpdate;
     bool outOfBounds = false;
     
-    
-    const int rootPosition = xIn+yIn*8;
-    tpUpdate.push_back(rootPosition);
+    XY size = modelMap->gridSize;
 
+    
+//    const int rootPosition = xIn+yIn*size.x;
+//    tpUpdate.push_back(rootPosition);
+    
+    data.add(String(xIn-xIn) + "," + String(yIn-yIn));
     
     
 //    for (var a : data) {
-        for (int i = 0; i < data->size(); i++) {
-            String str = (*data)[i];
+        for (int i = 0; i < data.size(); i++) {
+//            String str = (*data)[i];
+            String str = data[i];
             const int x = xIn + str.upToFirstOccurrenceOf(",", false, false).getIntValue();
             const int y = yIn + str.fromFirstOccurrenceOf(",", false, false).getIntValue();
-            bool o = (x < 0 || x >= 8) || (y < 0 || y >= 8);
+            
+            const bool o = modelMap->isOutsideGrid(x, y) || modelMap->getPad(x, y)->controller != nullptr;
 
             if (!o) {
-                const int position = x + (y*8);
+                const int position = x + (y*size.x);
                 tpUpdate.push_back(position);
             }
             outOfBounds |= o;
@@ -73,10 +106,19 @@ void PadGrid::doSomething (int xIn, int yIn, Array<var> * data)
     }
     
     for (int i : tpUpdate) {
-        pads[i]->col = outOfBounds ? Colours::red : Colours::orange;
+        if (type == Pad::Listner::eDrop && !outOfBounds) {
+            pads[i]->col = Colours::blue;
+            // we will enter a que messsage here, to do the actual update..
+            //async update.
+            modelMap->getPad(i)->controller = &controler;
+            
+        }
+        else if (type == Pad::Listner::eTest) {
+            pads[i]->col = outOfBounds ? Colours::red : Colours::orange;
+        }
     }
 
-    for (int i = 0; i < 64; i++) {
+    for (int i = 0; i < pads.size(); i++) {
         pads[i]->repaint();
     }
 }

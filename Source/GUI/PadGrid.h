@@ -11,7 +11,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Pad.h"
-
+#include "GridModelMap.h"
 
 
 
@@ -20,6 +20,7 @@ public:
     
     
     PadGrid ();
+    PadGrid (GridModelMap * map);
     ~PadGrid ();
     
     void paint (Graphics & g);
@@ -27,8 +28,11 @@ public:
     
     std::vector<Pad *> pads;
     
+    void objectDropped (const int x, const int y, Array<var> data, const Pad::Listner::eDropType type);
     
-    void doSomething (int x, int y, Array<var> * data);
+private:
+    GridModelMap * modelMap;
+    ControllerBase controler;
 };
 
 

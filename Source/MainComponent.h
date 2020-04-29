@@ -10,7 +10,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PadGrid.h"
-
+#include "GridModelMap.h"
 
 class Thing : public Component, public DragAndDropContainer {
     
@@ -98,7 +98,8 @@ public:
     void resized() override;
 
 private:
-    PadGrid pg;
+    GridModelMap    modelMap;
+    ScopedPointer<PadGrid> pg;
     Thing t;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
