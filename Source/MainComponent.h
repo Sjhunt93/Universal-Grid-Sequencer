@@ -11,6 +11,8 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PadGrid.h"
 #include "GridModelMap.h"
+#include "OGDeviceLaunchpad.hpp"
+#include "OGDeviceManager.hpp"
 
 class Thing : public Component, public DragAndDropContainer {
     
@@ -37,7 +39,7 @@ public:
         //        Point<int> point = this->getBounds().getCentre() * -1;
 #if 1
         //        Point<int> point(getWidth() - 5, getHeight() - 5);
-        startDragging(getPoints(), this, Image::null, true);
+        startDragging(getPoints(), this, {}, true);
 #else
         //        Point<int> p(0 - event.x, 0 - event.y);
         Image dragImage = this->createComponentSnapshot (this->getLocalBounds()).convertedToFormat (Image::ARGB);
@@ -97,7 +99,9 @@ public:
     void paint (Graphics&) override;
     void resized() override;
 
+    
 private:
+    OGDeviceManager deviceManager;
     GridModelMap    modelMap;
     ScopedPointer<PadGrid> pg;
     Thing t;

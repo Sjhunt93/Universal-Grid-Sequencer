@@ -10,6 +10,8 @@
 #define __OpenGrid__ControllerBase__
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "OGDevice.hpp"
+
 /*
  The base controller is a pure virtual class:
  
@@ -20,9 +22,7 @@
  This is later picked up by the GUI object
  */
 
-struct XY {
-    int x, y;
-};
+
 
 class ControllerBase {
 public:

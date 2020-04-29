@@ -11,6 +11,63 @@
 #if 0
 
 
+// we start with a device map
+// this translates its input into XY positions (also deals with rotation)
+// provides output for LED feedback.
+
+/* --------
+ 
+ Device Name
+ Orientation 
+ Mirror
+ Grid Size (X,Y)
+ Position
+ 
+ Input Type:
+    momentry pad
+    velocity pad
+    pressure pad
+    continous controller
+    + XY position
+ 
+ Output Type:
+    value... (Colour translated)
+ 
+ MIDI Port
+ 
+ 
+ 
+ ---------- */
+
+// MIDI device -> device translator -> grid (map) -> controller
+// Clock object
+
+/*  MIDI device: (this is just really the juce MIDI stuff)
+    - manages MIDI IO
+ 
+ 
+ 
+    Device translator
+        - translates inputs and outputs
+ 
+    buffer manager
+    - 
+ 
+    device manager
+        - manages all devices
+    grid manager
+        - manages the grid (sessions)
+    grid 
+        - maps each input to its controller
+ 
+    controller
+        - performs smart cations
+        - recieves clock information
+ 
+ */
+
+
+
 #endif
 
 

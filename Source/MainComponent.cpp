@@ -10,13 +10,41 @@
 
 
 //==============================================================================
-MainContentComponent::MainContentComponent() : modelMap({9,9})
+MainContentComponent::MainContentComponent() : modelMap({9,9}) , deviceManager({2,2})
 {
     pg = new PadGrid(&modelMap);
     addAndMakeVisible(pg);
     
     addAndMakeVisible(t);
     setSize (800, 800);
+    
+    auto arr = MidiInput::getDevices();
+    
+    for (auto str : arr) {
+        std::cout << str << "\n";
+    }
+    
+    auto arr2 = MidiOutput::getDevices();
+    for (auto str : arr2) {
+        std::cout << str << "\n";
+    }
+    
+    deviceManager.createNewDevice(OGDeviceManager::eDeviceType::eLaunchpadRG, {0,0}, "Launchpad Mini", "Launchpad Mini");
+    deviceManager.deviceAtPos({0,0})->setOrientation(OGDevice::eOrientation::eRotatedLeft);
+    
+    
+    deviceManager.createNewDevice(OGDeviceManager::eDeviceType::eLaunchpadRG, {1,0}, "Launchpad Mini 2", "Launchpad Mini 2");
+    deviceManager.deviceAtPos({1,0})->offset = {9,0};
+    
+    deviceManager.createNewDevice(OGDeviceManager::eDeviceType::eLaunchpadRG, {0,1}, "Launchpad Mini 3", "Launchpad Mini 3");
+    deviceManager.deviceAtPos({0,1})->setOrientation(OGDevice::eOrientation::eRotated180);
+    deviceManager.deviceAtPos({0,1})->offset = {0,9};
+    
+    deviceManager.createNewDevice(OGDeviceManager::eDeviceType::eLaunchpadRG, {1,1}, "Launchpad Mini 4", "Launchpad Mini 4");
+    deviceManager.deviceAtPos({1,1})->setOrientation(OGDevice::eOrientation::eRotatedRight);
+    deviceManager.deviceAtPos({1,1})->offset = {9,9};
+    
+    deviceManager.createMap();
 }
 
 MainContentComponent::~MainContentComponent()
