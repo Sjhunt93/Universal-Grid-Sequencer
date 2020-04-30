@@ -3,7 +3,7 @@
 <JUCERPROJECT id="JTVLuz" name="OpenGrid" displaySplashScreen="1" reportAppUsage="1"
               splashScreenColour="Dark" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.yourcompany.OpenGrid" includeBinaryInAppConfig="1"
-              cppLanguageStandard="11" jucerVersion="5.1.2">
+              cppLanguageStandard="11" jucerVersion="5.4.7">
   <MAINGROUP id="TfxLha" name="OpenGrid">
     <GROUP id="{65549C3D-0956-55E9-8420-74314D42FE72}" name="Source">
       <FILE id="vqDLOA" name="MainComponent.cpp" compile="1" resource="0"
@@ -51,4 +51,7 @@
     <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS/>
+  <LIVE_SETTINGS>
+    <OSX/>
+  </LIVE_SETTINGS>
 </JUCERPROJECT>
