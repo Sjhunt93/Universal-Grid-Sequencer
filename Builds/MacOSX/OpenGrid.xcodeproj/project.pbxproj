@@ -413,6 +413,7 @@
 				FF695B18F06BD81DDFEBF328 /* include_juce_cryptography.mm in Sources */,
 				70A1F23E2459F8C1001469A0 /* OGDeviceManager.cpp in Sources */,
 				03CCFA6FF460E7C41904C9B3 /* include_juce_data_structures.mm in Sources */,
+				47119E1D245A31BF00D9E457 /* MasterClock.cpp in Sources */,
 				5E47A923B7E7D56BE83C0A74 /* include_juce_events.mm in Sources */,
 				A1D07535D3BF409DDF312062 /* include_juce_graphics.mm in Sources */,
 				26C3661B67001F16D9585C61 /* include_juce_gui_basics.mm in Sources */,
