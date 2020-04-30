@@ -1,26 +1,18 @@
 //
-//  MasterClock.hpp
-//  OpenGrid - App
+//  InputBuffer.hpp
+//  OpenGrid
 //
-//  Created by Samuel Hunt on 4/29/20.
+//  Created by Samuel Hunt on 30/04/2020.
+//
 //
 
-#ifndef MasterClock_hpp
-#define MasterClock_hpp
+#ifndef InputBuffer_hpp
+#define InputBuffer_hpp
 
+#include <stdio.h>
 #include "../JuceLibraryCode/JuceHeader.h"
 #include <array>
-
-
-class MasterClock : public Thread {
-public:
-    
-    MasterClock ();
-    ~MasterClock ();
-    
-    void run();
-};
-
+#include "OGDevice.hpp"
 
 struct InputBuffer {
     
@@ -30,7 +22,7 @@ struct InputBuffer {
         readPos = 0;
     }
     //this is thread safe
-    void addMessage (MidiMessage msg)
+    void addMessage (OGDevice::OGInMsg msg)
     {
         //add mutex.
         buffer[writePosA] = msg;
@@ -40,30 +32,37 @@ struct InputBuffer {
             writePosA = 0;
         }
     }
-    void clearBuffer ()
+    int clearBuffer (std::array<OGDevice::OGInMsg, 50> & bufferOut)
     {
         //add mutex
+        int i = 0;
         int writePos = writePosA; //at this point the addMessage thread is free to contiue.
         for (;  writePos < readPos ? readPos < buffer.size() : readPos < writePos ; readPos++)
         {
-            MidiMessage msg = buffer[readPos];
-            std::cout << msg.getDescription() << "\n";
+            OGDevice::OGInMsg msg = buffer[readPos];
+            //std::cout << msg.getDescription() << "\n";
+            bufferOut[i] = msg;
+            i++;
+            
         }
         
         if (readPos >= buffer.size()) {
             readPos = 0;
         }
         for (; readPos < writePos; readPos++) {
-            MidiMessage msg = buffer[readPos];
-            std::cout << msg.getDescription() << "\n";
+            OGDevice::OGInMsg msg = buffer[readPos];
+            bufferOut[i] = msg;
+            i++;
+           // std::cout << msg.getDescription() << "\n";
         }
+        return i;
         //readPos--;
     }
     
-    std::array<MidiMessage, 4> buffer;
+    std::array<OGDevice::OGInMsg, 50> buffer; //complete guess for size.
     std::atomic<int> writePosA;
     int readPos;
     
 };
 
-#endif /* MasterClock_hpp */
+#endif /* InputBuffer_hpp */

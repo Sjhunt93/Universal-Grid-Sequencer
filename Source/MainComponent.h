@@ -14,6 +14,10 @@
 #include "OGDeviceLaunchpad.hpp"
 #include "OGDeviceManager.hpp"
 
+#include "MasterClock.hpp"
+#include "OGSession.hpp"
+
+
 class Thing : public Component, public DragAndDropContainer {
     
 public:
@@ -102,6 +106,11 @@ public:
     
 private:
     OGDeviceManager deviceManager;
+    MasterClock     mClock;
+    
+    std::unique_ptr<OGSession>    session;
+    
+    
     GridModelMap    modelMap;
     ScopedPointer<PadGrid> pg;
     Thing t;

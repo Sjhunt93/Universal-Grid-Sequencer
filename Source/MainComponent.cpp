@@ -30,21 +30,28 @@ MainContentComponent::MainContentComponent() : modelMap({9,9}) , deviceManager({
     }
     
     deviceManager.createNewDevice(OGDeviceManager::eDeviceType::eLaunchpadRG, {0,0}, "Launchpad Mini", "Launchpad Mini");
-    deviceManager.deviceAtPos({0,0})->setOrientation(OGDevice::eOrientation::eRotatedLeft);
+    deviceManager.deviceAtPosInVector({0,0})->setOrientation(OGDevice::eOrientation::eRotatedLeft);
     
     
     deviceManager.createNewDevice(OGDeviceManager::eDeviceType::eLaunchpadRG, {1,0}, "Launchpad Mini 2", "Launchpad Mini 2");
-    deviceManager.deviceAtPos({1,0})->offset = {9,0};
+    deviceManager.deviceAtPosInVector({1,0})->offset = {9,0};
     
     deviceManager.createNewDevice(OGDeviceManager::eDeviceType::eLaunchpadRG, {0,1}, "Launchpad Mini 3", "Launchpad Mini 3");
-    deviceManager.deviceAtPos({0,1})->setOrientation(OGDevice::eOrientation::eRotated180);
-    deviceManager.deviceAtPos({0,1})->offset = {0,9};
+    deviceManager.deviceAtPosInVector({0,1})->setOrientation(OGDevice::eOrientation::eRotated180);
+    deviceManager.deviceAtPosInVector({0,1})->offset = {0,9};
     
     deviceManager.createNewDevice(OGDeviceManager::eDeviceType::eLaunchpadRG, {1,1}, "Launchpad Mini 4", "Launchpad Mini 4");
-    deviceManager.deviceAtPos({1,1})->setOrientation(OGDevice::eOrientation::eRotatedRight);
-    deviceManager.deviceAtPos({1,1})->offset = {9,9};
+    deviceManager.deviceAtPosInVector({1,1})->setOrientation(OGDevice::eOrientation::eRotatedRight);
+    deviceManager.deviceAtPosInVector({1,1})->offset = {9,9};
     
     deviceManager.createMap();
+    
+    session = std::make_unique<OGSession>(deviceManager);
+    
+    mClock.frameBufferCallback = [this]()
+    {
+        deviceManager.dispatchBufferToControllers(session.get());
+    };
 }
 
 MainContentComponent::~MainContentComponent()

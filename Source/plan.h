@@ -64,6 +64,11 @@
         - performs smart cations
         - recieves clock information
  
+ 
+    colourBuffer:
+    this is what all controllers write to, each controller has its own buffer. these are then are compiled into one buffer.
+ this one buffer is sent back to the device manager, which keeps a copy of the buffer then only outputs what is needed each time.
+ 
  */
 
 
