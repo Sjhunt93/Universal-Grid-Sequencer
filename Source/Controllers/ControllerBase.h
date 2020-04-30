@@ -55,6 +55,7 @@ public:
     
     virtual void controlInput (const int index, const int velocity, const eControlType type) {}
     
+    // list of input controls (for example switching presets
     
 private:
     

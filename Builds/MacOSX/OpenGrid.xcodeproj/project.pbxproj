@@ -28,6 +28,9 @@
 		700B1CF52459AEB600889AC2 /* OGDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 700B1CF32459AEB600889AC2 /* OGDevice.cpp */; };
 		7060A99E2459BFA1009138BD /* OGDeviceLaunchpad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7060A99C2459BFA1009138BD /* OGDeviceLaunchpad.cpp */; };
 		70A1F23E2459F8C1001469A0 /* OGDeviceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70A1F23C2459F8C1001469A0 /* OGDeviceManager.cpp */; };
+		70A1F241245A1528001469A0 /* OGSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70A1F23F245A1528001469A0 /* OGSession.cpp */; };
+		70A1F245245A1663001469A0 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70A1F243245A1663001469A0 /* Clock.cpp */; };
+		70A1F248245A1674001469A0 /* MasterClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70A1F246245A1674001469A0 /* MasterClock.cpp */; };
 		7AC87965F1D7B0EC9B9BC30A /* include_juce_opengl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 49F70C57F48BD5ACE29A2ACE /* include_juce_opengl.mm */; };
 		87CF6CE9BA26D51511407915 /* include_juce_audio_devices.mm in Sources */ = {isa = PBXBuildFile; fileRef = 19F635F26F3BE841406C87A8 /* include_juce_audio_devices.mm */; };
 		90F7B53A89A95A65F64787EC /* MainComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F138A71AB6E339F3FDBF7D92 /* MainComponent.cpp */; };
@@ -81,6 +84,12 @@
 		7060A99D2459BFA1009138BD /* OGDeviceLaunchpad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGDeviceLaunchpad.hpp; sourceTree = "<group>"; };
 		70A1F23C2459F8C1001469A0 /* OGDeviceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGDeviceManager.cpp; sourceTree = "<group>"; };
 		70A1F23D2459F8C1001469A0 /* OGDeviceManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGDeviceManager.hpp; sourceTree = "<group>"; };
+		70A1F23F245A1528001469A0 /* OGSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGSession.cpp; sourceTree = "<group>"; };
+		70A1F240245A1528001469A0 /* OGSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGSession.hpp; sourceTree = "<group>"; };
+		70A1F243245A1663001469A0 /* Clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Clock.cpp; sourceTree = "<group>"; };
+		70A1F244245A1663001469A0 /* Clock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Clock.hpp; sourceTree = "<group>"; };
+		70A1F246245A1674001469A0 /* MasterClock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MasterClock.cpp; sourceTree = "<group>"; };
+		70A1F247245A1674001469A0 /* MasterClock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MasterClock.hpp; sourceTree = "<group>"; };
 		7102A8B5A74A0D00D2B88AEF /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		7283A7CDA32C018453F53B7D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		7B34FAF0EC64CE84B9BF62AD /* MainComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainComponent.h; path = ../../Source/MainComponent.h; sourceTree = SOURCE_ROOT; };
@@ -141,6 +150,7 @@
 		25CE95A574E335CB68DBE9E4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				70A1F242245A1658001469A0 /* Timing */,
 				700B1CF22459AE9B00889AC2 /* Devices */,
 				700B1CDD2459AB2E00889AC2 /* Controllers */,
 				700B1CE02459AB2E00889AC2 /* Data */,
@@ -207,6 +217,8 @@
 		700B1CDD2459AB2E00889AC2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				70A1F23F245A1528001469A0 /* OGSession.cpp */,
+				70A1F240245A1528001469A0 /* OGSession.hpp */,
 				700B1CDE2459AB2E00889AC2 /* ControllerBase.cpp */,
 				700B1CDF2459AB2E00889AC2 /* ControllerBase.h */,
 			);
@@ -259,6 +271,18 @@
 			);
 			name = Devices;
 			path = ../../Source/Devices;
+			sourceTree = "<group>";
+		};
+		70A1F242245A1658001469A0 /* Timing */ = {
+			isa = PBXGroup;
+			children = (
+				70A1F243245A1663001469A0 /* Clock.cpp */,
+				70A1F244245A1663001469A0 /* Clock.hpp */,
+				70A1F246245A1674001469A0 /* MasterClock.cpp */,
+				70A1F247245A1674001469A0 /* MasterClock.hpp */,
+			);
+			name = Timing;
+			path = ../../Source/Timing;
 			sourceTree = "<group>";
 		};
 		92112F3DB935413DD2B28EC0 /* JUCE Modules */ = {
@@ -397,7 +421,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70A1F241245A1528001469A0 /* OGSession.cpp in Sources */,
 				700B1CEE2459AB2E00889AC2 /* Pad.cpp in Sources */,
+				70A1F248245A1674001469A0 /* MasterClock.cpp in Sources */,
 				700B1CF02459AB2E00889AC2 /* GridModelMap.cpp in Sources */,
 				90F7B53A89A95A65F64787EC /* MainComponent.cpp in Sources */,
 				58208722D4975EE215ACD216 /* Main.cpp in Sources */,
@@ -412,6 +438,7 @@
 				A53C840DECB1826AA6BBAA47 /* include_juce_core.mm in Sources */,
 				FF695B18F06BD81DDFEBF328 /* include_juce_cryptography.mm in Sources */,
 				70A1F23E2459F8C1001469A0 /* OGDeviceManager.cpp in Sources */,
+				70A1F245245A1663001469A0 /* Clock.cpp in Sources */,
 				03CCFA6FF460E7C41904C9B3 /* include_juce_data_structures.mm in Sources */,
 				5E47A923B7E7D56BE83C0A74 /* include_juce_events.mm in Sources */,
 				A1D07535D3BF409DDF312062 /* include_juce_graphics.mm in Sources */,
