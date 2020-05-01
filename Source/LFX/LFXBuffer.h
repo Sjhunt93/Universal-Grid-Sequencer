@@ -13,6 +13,7 @@
 #include "LFXColor.h"
 #include <fstream>
 
+
 class LFXBuffer {
 public:
     LFXBuffer (const int rows, const int columns);
@@ -22,11 +23,17 @@ public:
     void setBufferBlend (const bool blend);
 
     
-    LFXColor& colorForInex (const int index);
+    LFXColor& colorForIndex (const int index);
     LFXColor& colorForPostion (const int row, const int column);
     void writeToIndex (LFXColor input, const int index);
     void writeToPosition (LFXColor input, const int row, const int column);
     void writeToPositionXY (LFXColor input, const int x, const int y, bool blend = true);
+    
+    //essentially this checks to see if the colour at the position is already the same.
+    //If this returns true we don't need to send any feedback
+    bool writeOptimised (LFXColor input, const int x, const int y);
+    
+    //simple index checker.
     bool check (const int x, const int y);
     
     void blendWithBuffer (LFXBuffer other); //only supported with RGB

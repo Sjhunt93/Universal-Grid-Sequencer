@@ -19,7 +19,7 @@ public:
     virtual ~OGDeviceLaunchpad ();
     
     
-    void setFeedback (OGColour colour, XY position);
+    void setFeedback (LFXColor colour, XY position);
     const ePysicalRepresentation getPysicalElementForXY (XY pos);
     const eColourType getColourType ();
     void resetDevice ();

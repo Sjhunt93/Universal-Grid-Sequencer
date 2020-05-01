@@ -20,5 +20,5 @@ OGController::~OGController ()
 
 LFXBuffer& OGController::getLFXBuffer ()
 {
-    
+    return lfxBuffer;
 }

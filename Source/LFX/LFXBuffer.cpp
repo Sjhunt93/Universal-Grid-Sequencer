@@ -16,9 +16,9 @@ dataSize(rows * columns)
 {
     data = new LFXColor[dataSize]();
     for (int i = 0; i < dataSize; i++) {
-        clearColor(data[i]);
+        data[i].clearColor();
     }
-    blendColours = 1;
+    blendColours = false;
 }
 
 LFXBuffer::LFXBuffer (const LFXBuffer& other) :
@@ -30,11 +30,11 @@ dataSize(totalRows * totalColums)
     for (int i = 0; i <dataSize; i++) {
         data[i] = other.data[i];
     }
-    blendColours = 1;
+    blendColours = false;
 }
 LFXBuffer::~LFXBuffer ()
 {
-    delete data;
+    delete [] data;
 }
 
 void LFXBuffer::setBufferBlend (const bool blend)
@@ -42,7 +42,7 @@ void LFXBuffer::setBufferBlend (const bool blend)
     blendColours = blend;
 }
 
-LFXColor& LFXBuffer::colorForInex (const int index)
+LFXColor& LFXBuffer::colorForIndex (const int index)
 {
     jassert(index < dataSize);
     return data[index];
@@ -65,11 +65,11 @@ inline LFXColor blendRGB (LFXColor old, LFXColor newInput)
         return old;
     }
     
-    const u8 red = (old.colorRGB[0] + newInput.colorRGB[0]) / 2;
-    const u8 green = (old.colorRGB[1] + newInput.colorRGB[1]) / 2;
-    const u8 blue = (old.colorRGB[2] + newInput.colorRGB[2]) / 2;
+    const uint8 red = (old.colorRGB[0] + newInput.colorRGB[0]) / 2;
+    const uint8 green = (old.colorRGB[1] + newInput.colorRGB[1]) / 2;
+    const uint8 blue = (old.colorRGB[2] + newInput.colorRGB[2]) / 2;
     
-    return LFXColor {0, {red, green, blue}};
+    return LFXColor(red, green, blue);
 }
 
 void LFXBuffer::writeToIndex (LFXColor input, const int index)
@@ -97,6 +97,20 @@ void LFXBuffer::writeToPositionXY (LFXColor input, const int x, const int y, boo
     data[index] = (blendColours && blend) ? blendRGB(data[index], input) : input;
 
 //    data[y * totalColums + x] = input;
+}
+
+bool LFXBuffer::writeOptimised (LFXColor input, const int x, const int y)
+{
+    jassert(y < totalRows && y >= 0);
+    jassert(x < totalColums && x >= 0);
+    const int index = y * totalColums + x;
+    if (compareColours(input, data[index], true)) {
+        return false;
+    }
+    else {
+        data[index] = input;
+    }
+    return true;
 }
 bool LFXBuffer::check (const int x, const int y)
 {
@@ -129,6 +143,8 @@ void LFXBuffer::blendWithColor (LFXColor color)
         //        }
     }
 }
+
+
 
 void LFXBuffer::operator=(const LFXBuffer& other)
 {
@@ -208,13 +224,13 @@ void LFXBuffer::replaceColour (LFXColor old, LFXColor newCol, bool RGB )
 /*static*/void LFXBuffer::clearBuffer (LFXBuffer& buffer)
 {
     for (int i = 0; i < buffer.dataSize; i++) {
-        clearColor(buffer.data[i]);
+        buffer.data[i].clearColor();
     }
 }
 /*static*/ void LFXBuffer::clearBuffer (LFXBuffer* buffer)
 {
     for (int i = 0; i < buffer->dataSize; i++) {
-        clearColor(buffer->data[i]);
+        buffer->data[i].clearColor();
     }
 }
 
@@ -239,7 +255,8 @@ void LFXBuffer::replaceColour (LFXColor old, LFXColor newCol, bool RGB )
     LFXBuffer newBuffer (buffer);
     for (int i = 0; i < buffer.dataSize; i++) {
         if (! (compareColours(buffer.data[i], colour, rgb))) {
-            clearColor(newBuffer.data[i]);
+            newBuffer.data[i].clearColor();
+
         }
     }
     return newBuffer;

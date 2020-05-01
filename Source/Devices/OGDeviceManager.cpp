@@ -9,16 +9,18 @@
 #include "OGDeviceManager.hpp"
 #include "OGDeviceLaunchpad.hpp"
 #include "OGSession.hpp"
+#include "OGController.hpp"
 
-OGDeviceManager::OGDeviceManager (XY size) : gridSize(size)
+OGDeviceManager::OGDeviceManager (XY size) : gridSize(size) //, deviceBufferSend(1,1)
 {
-    
+    deviceBufferSend = nullptr;
 }
 OGDeviceManager::~OGDeviceManager ()
 {
     for (int i = 0; i < devices.size(); i++) {
         delete devices[i];
     }
+    delete deviceBufferSend;
 }
 
 void OGDeviceManager::createNewDevice (eDeviceType type, XY position, String midiIn, String midiOut)
@@ -131,7 +133,8 @@ void OGDeviceManager::createMap ()
         
     }
     
-    
+    delete deviceBufferSend;
+    deviceBufferSend = new LFXBuffer(padGridSize.y, padGridSize.x);
 }
 void OGDeviceManager::dispatchBufferToControllers (OGSession * sessionToSendToo)
 {
@@ -144,5 +147,33 @@ void OGDeviceManager::dispatchBufferToControllers (OGSession * sessionToSendToo)
     
     for (int i = 0; i < size; i++) {
         sessionToSendToo->messageRecieved(messageBufferLocal[i]);
+    }
+}
+
+void OGDeviceManager::collectLFXBuffers (OGSession * session)
+{
+    if (session != nullptr) {
+        for (int ci = 0; ci < session->getTotalControllers(); ci++) {
+            auto controller = session->controllerForIndex(ci);
+            jassert(controller != nullptr);
+            
+            LFXBuffer & buffer = controller->getLFXBuffer();
+            for (int x = 0; x < buffer.totalColums; x++) {
+                for (int y = 0; y < buffer.totalRows; y++) {
+                    XY pos = {x+controller->position.x, y+controller->position.y};
+                    
+                    bool toSend = deviceBufferSend->writeOptimised(buffer.colorForPostion(y, x), pos.x, pos.y);
+                    
+                    if (toSend) {
+                        //we need to now send.
+                        const int index = pos.x + pos.y * padGridSize.x;
+                        OGDevice * originalDevice = deviceMap[index].originalDevice;
+                        originalDevice->setFeedback(deviceBufferSend->colorForPostion(y, x), {pos.x - originalDevice->offset.x, pos.y - originalDevice->offset.y} );
+                        
+                    }
+                    
+                }
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@
 #define OGDevice_hpp
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "LFXBuffer.h"
 
 struct XY {
     int x;
@@ -70,11 +71,7 @@ public:
         eRGB, // full colour
     };
     
-    struct OGColour {
-        float red;
-        float blue;
-        float green;
-    };
+
     
     
     OGDevice (String MIDINameIn, String MIDINameOut);
@@ -83,7 +80,7 @@ public:
     void setOrientation (eOrientation orientation); //by default all devices will be in eNormal
     
     // The device will need to implement this
-    virtual void setFeedback (OGColour colour, XY position) = 0;
+    virtual void setFeedback (LFXColor color, XY position) = 0;
 
     //you can use this to return a position from one orientation to another this assumes the grid is rectangular
     XY getNeturalXY (XY position);

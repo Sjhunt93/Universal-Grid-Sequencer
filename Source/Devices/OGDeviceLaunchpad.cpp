@@ -25,14 +25,28 @@ OGDeviceLaunchpad::~OGDeviceLaunchpad ()
 }
 
 
-void OGDeviceLaunchpad::setFeedback (OGColour colour, XY position)
+void OGDeviceLaunchpad::setFeedback (LFXColor colour, XY position)
 {
     position = getNeturalXY(position);
+    
+    // 8 is off
+    // 00GG 10RR //
+    
+    /*
+     We take the red and green components.
+     red occupies the lowest two bits of the result.
+     green occupies bits 4 and 5. (16 & 32)
+     */
+    const int red = colour.colorRGB[0];
+    const int green = colour.colorRGB[1];
+    const int colourRounded = (((red) / 85) + (((green) / 85) <<  4)) | 0x08;
+    
+    
     if (position.y == 0) {
-        outDevice->sendMessageNow(MidiMessage::controllerEvent(1, 104+position.x, 127));
+        outDevice->sendMessageNow(MidiMessage::controllerEvent(1, 104+position.x, colourRounded));
     }
     else {
-        outDevice->sendMessageNow(MidiMessage(0x90, position.x + ((position.y-1) * 16), 127));
+        outDevice->sendMessageNow(MidiMessage(0x90, position.x + ((position.y-1) * 16), colourRounded));
     }
 }
 const OGDevice::ePysicalRepresentation OGDeviceLaunchpad::getPysicalElementForXY (XY pos)

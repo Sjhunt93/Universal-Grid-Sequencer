@@ -12,7 +12,12 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 
 
-typedef unsigned char u8; //default for MIDI
+
+/*
+ The majortiy of the code here is from an old project.
+ */
+
+
 
 
 enum RGBIndex {
@@ -48,22 +53,31 @@ static const eRGDeviceColors colorsList[] = {colGreen1, colGreen2, colGreen3, co
 //for pure efficent we want to keep any functionality outside of LPFXColor, as we will have buffers and buffers of these small LFXcolors etc...
 
 struct LFXColor {
-    u8 colorRG; //used for Launchpad Original, Mini, S and Mini MK2
-    u8 colorRGB[3]; //used for Pro and Launchpad RGB. Later will use for Push
+    uint8 colorRG; //used for Launchpad Original, Mini, S and Mini MK2
+    uint8 colorRGB[3]; //used for Pro and Launchpad RGB. Later will use for Push
+    
+    LFXColor ();
+    LFXColor (uint8 r, uint8 g, uint8 b);
+    
+    void setRGB(uint8 r, uint8 g, uint8 b);
+    void setRG (uint8 colorValue);
+    void setRGBAndDowncastRG (uint8 r, uint8 g, uint8 b);
+    void clearColor ();
+    
+    
+    
+    
+    
 };
 
-void setRGB( LFXColor &color, u8 r, u8 g, u8 b);
-void setRG (LFXColor &color, u8 colorValue);
-void setRGBAndDowncastRG (LFXColor &color, u8 r, u8 g, u8 b);
-void clearColor (LFXColor &color);
 
 static const LFXColor COLOFF () {
-    LFXColor t;
-    clearColor(t);
+    LFXColor t(0,0,0);
+    t.clearColor();
     return t;
 }
 
-static u8 getRandomRGColor () {
+static uint8 getRandomRGColor () {
 #ifdef JUCE_MAC
     return colorsList[(arc4random() % eRGColorsTOTAL)];
 #else 

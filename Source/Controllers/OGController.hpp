@@ -40,6 +40,8 @@ public:
     virtual void clockPulse (int _1_4, int _1_8, int _1_16, int _1_32, int _1_64) {}
     virtual void clockPulse (int ticks) {}
 
+    virtual XY getMinimumSize () = 0;
+    virtual XY getMaximumSize () = 0;
 
     
     const XY size;
@@ -49,7 +51,7 @@ public:
     int selectedBufferl;
     
     LFXBuffer& getLFXBuffer ();
-private:
+protected:
 
     LFXBuffer lfxBuffer;
 };

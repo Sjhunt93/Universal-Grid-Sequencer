@@ -50,6 +50,10 @@ MainContentComponent::MainContentComponent() : modelMap({9,9}) , deviceManager({
     
     mClock.frameBufferCallback = [this]()
     {
+        deviceManager.collectLFXBuffers(session.get());
+    };
+    mClock._1msCallback = [this]()
+    {
         deviceManager.dispatchBufferToControllers(session.get());
     };
 }

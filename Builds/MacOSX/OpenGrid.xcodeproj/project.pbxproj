@@ -26,6 +26,7 @@
 		700B1CF02459AB2E00889AC2 /* GridModelMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 700B1CE82459AB2E00889AC2 /* GridModelMap.cpp */; };
 		700B1CF12459AB2E00889AC2 /* IODevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 700B1CEA2459AB2E00889AC2 /* IODevice.cpp */; };
 		700B1CF52459AEB600889AC2 /* OGDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 700B1CF32459AEB600889AC2 /* OGDevice.cpp */; };
+		70132FA8245C693400077AC8 /* OGTestController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70132FA6245C693400077AC8 /* OGTestController.cpp */; };
 		7013D783245B1910002EDCE2 /* OGController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7013D781245B1910002EDCE2 /* OGController.cpp */; };
 		7013D789245B2127002EDCE2 /* LFXBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7013D785245B2127002EDCE2 /* LFXBuffer.cpp */; };
 		7013D78A245B2127002EDCE2 /* LFXColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7013D787245B2127002EDCE2 /* LFXColor.cpp */; };
@@ -84,6 +85,8 @@
 		700B1CEC2459AB2E00889AC2 /* plan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plan.h; path = ../../Source/plan.h; sourceTree = "<group>"; };
 		700B1CF32459AEB600889AC2 /* OGDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGDevice.cpp; sourceTree = "<group>"; };
 		700B1CF42459AEB600889AC2 /* OGDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGDevice.hpp; sourceTree = "<group>"; };
+		70132FA6245C693400077AC8 /* OGTestController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGTestController.cpp; sourceTree = "<group>"; };
+		70132FA7245C693400077AC8 /* OGTestController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGTestController.hpp; sourceTree = "<group>"; };
 		7013D781245B1910002EDCE2 /* OGController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGController.cpp; sourceTree = "<group>"; };
 		7013D782245B1910002EDCE2 /* OGController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGController.hpp; sourceTree = "<group>"; };
 		7013D785245B2127002EDCE2 /* LFXBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LFXBuffer.cpp; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				70A1F240245A1528001469A0 /* OGSession.hpp */,
 				7013D781245B1910002EDCE2 /* OGController.cpp */,
 				7013D782245B1910002EDCE2 /* OGController.hpp */,
+				70132FA6245C693400077AC8 /* OGTestController.cpp */,
+				70132FA7245C693400077AC8 /* OGTestController.hpp */,
 				700B1CDE2459AB2E00889AC2 /* ControllerBase.cpp */,
 				700B1CDF2459AB2E00889AC2 /* ControllerBase.h */,
 			);
@@ -456,6 +461,7 @@
 				70A1F248245A1674001469A0 /* MasterClock.cpp in Sources */,
 				7013D783245B1910002EDCE2 /* OGController.cpp in Sources */,
 				700B1CF02459AB2E00889AC2 /* GridModelMap.cpp in Sources */,
+				70132FA8245C693400077AC8 /* OGTestController.cpp in Sources */,
 				90F7B53A89A95A65F64787EC /* MainComponent.cpp in Sources */,
 				58208722D4975EE215ACD216 /* Main.cpp in Sources */,
 				700B1CED2459AB2E00889AC2 /* ControllerBase.cpp in Sources */,

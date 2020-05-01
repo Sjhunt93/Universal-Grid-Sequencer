@@ -39,8 +39,11 @@ public:
     OGSession (OGDeviceManager & devManager);
     ~OGSession ();
     void messageRecieved (OGDevice::OGInMsg msg);
-
     
+    
+    void buildMap ();
+    const int getTotalControllers ();
+    OGController * controllerForIndex (const int index);
     
 private:
     OGDeviceManager & devManager;
