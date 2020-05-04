@@ -31,6 +31,8 @@
 		7013D789245B2127002EDCE2 /* LFXBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7013D785245B2127002EDCE2 /* LFXBuffer.cpp */; };
 		7013D78A245B2127002EDCE2 /* LFXColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7013D787245B2127002EDCE2 /* LFXColor.cpp */; };
 		7013D78D245B25FB002EDCE2 /* InputBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7013D78B245B25FB002EDCE2 /* InputBuffer.cpp */; };
+		70294CE2246048F600371ACB /* OGControllerLargeDrumPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70294CE0246048F600371ACB /* OGControllerLargeDrumPad.cpp */; };
+		70294CE524604DE800371ACB /* LFXFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70294CE324604DE800371ACB /* LFXFacade.cpp */; };
 		7060A99E2459BFA1009138BD /* OGDeviceLaunchpad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7060A99C2459BFA1009138BD /* OGDeviceLaunchpad.cpp */; };
 		70A1F23E2459F8C1001469A0 /* OGDeviceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70A1F23C2459F8C1001469A0 /* OGDeviceManager.cpp */; };
 		70A1F241245A1528001469A0 /* OGSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70A1F23F245A1528001469A0 /* OGSession.cpp */; };
@@ -95,6 +97,10 @@
 		7013D788245B2127002EDCE2 /* LFXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFXColor.h; sourceTree = "<group>"; };
 		7013D78B245B25FB002EDCE2 /* InputBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputBuffer.cpp; sourceTree = "<group>"; };
 		7013D78C245B25FB002EDCE2 /* InputBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InputBuffer.hpp; sourceTree = "<group>"; };
+		70294CE0246048F600371ACB /* OGControllerLargeDrumPad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGControllerLargeDrumPad.cpp; sourceTree = "<group>"; };
+		70294CE1246048F600371ACB /* OGControllerLargeDrumPad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerLargeDrumPad.hpp; sourceTree = "<group>"; };
+		70294CE324604DE800371ACB /* LFXFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LFXFacade.cpp; sourceTree = "<group>"; };
+		70294CE424604DE800371ACB /* LFXFacade.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LFXFacade.hpp; sourceTree = "<group>"; };
 		7060A99C2459BFA1009138BD /* OGDeviceLaunchpad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGDeviceLaunchpad.cpp; sourceTree = "<group>"; };
 		7060A99D2459BFA1009138BD /* OGDeviceLaunchpad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGDeviceLaunchpad.hpp; sourceTree = "<group>"; };
 		70A1F23C2459F8C1001469A0 /* OGDeviceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGDeviceManager.cpp; sourceTree = "<group>"; };
@@ -234,6 +240,7 @@
 		700B1CDD2459AB2E00889AC2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				70294CDF246046DF00371ACB /* Notes */,
 				70A1F23F245A1528001469A0 /* OGSession.cpp */,
 				70A1F240245A1528001469A0 /* OGSession.hpp */,
 				7013D781245B1910002EDCE2 /* OGController.cpp */,
@@ -303,9 +310,20 @@
 				7013D786245B2127002EDCE2 /* LFXBuffer.h */,
 				7013D787245B2127002EDCE2 /* LFXColor.cpp */,
 				7013D788245B2127002EDCE2 /* LFXColor.h */,
+				70294CE424604DE800371ACB /* LFXFacade.hpp */,
+				70294CE324604DE800371ACB /* LFXFacade.cpp */,
 			);
 			name = LFX;
 			path = ../../Source/LFX;
+			sourceTree = "<group>";
+		};
+		70294CDF246046DF00371ACB /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				70294CE0246048F600371ACB /* OGControllerLargeDrumPad.cpp */,
+				70294CE1246048F600371ACB /* OGControllerLargeDrumPad.hpp */,
+			);
+			path = Notes;
 			sourceTree = "<group>";
 		};
 		70A1F242245A1658001469A0 /* Timing */ = {
@@ -464,6 +482,7 @@
 				70132FA8245C693400077AC8 /* OGTestController.cpp in Sources */,
 				90F7B53A89A95A65F64787EC /* MainComponent.cpp in Sources */,
 				58208722D4975EE215ACD216 /* Main.cpp in Sources */,
+				70294CE524604DE800371ACB /* LFXFacade.cpp in Sources */,
 				700B1CED2459AB2E00889AC2 /* ControllerBase.cpp in Sources */,
 				977A3C46A9B6428963FDF54C /* include_juce_audio_basics.mm in Sources */,
 				700B1CEF2459AB2E00889AC2 /* PadGrid.cpp in Sources */,
@@ -486,6 +505,7 @@
 				7013D789245B2127002EDCE2 /* LFXBuffer.cpp in Sources */,
 				7AC87965F1D7B0EC9B9BC30A /* include_juce_opengl.mm in Sources */,
 				60E9757BA1F5B3CB4B896A79 /* include_juce_video.mm in Sources */,
+				70294CE2246048F600371ACB /* OGControllerLargeDrumPad.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

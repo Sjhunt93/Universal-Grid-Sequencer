@@ -14,6 +14,9 @@
 OGDeviceManager::OGDeviceManager (XY size) : gridSize(size) //, deviceBufferSend(1,1)
 {
     deviceBufferSend = nullptr;
+    
+    deviceOutput = MidiOutput::createNewDevice("Open Grid Midi Out");
+    
 }
 OGDeviceManager::~OGDeviceManager ()
 {
@@ -157,23 +160,33 @@ void OGDeviceManager::collectLFXBuffers (OGSession * session)
             auto controller = session->controllerForIndex(ci);
             jassert(controller != nullptr);
             
-            LFXBuffer & buffer = controller->getLFXBuffer();
-            for (int x = 0; x < buffer.totalColums; x++) {
-                for (int y = 0; y < buffer.totalRows; y++) {
-                    XY pos = {x+controller->position.x, y+controller->position.y};
+            LFXBuffer & bufferToCopy = controller->getLFXBuffer();
+            for (int x = 0; x < bufferToCopy.totalColums; x++) {
+                for (int y = 0; y < bufferToCopy.totalRows; y++) {
+                    XY posRelativeToGrid = {x+controller->position.x, y+controller->position.y}; //overall grid
                     
-                    bool toSend = deviceBufferSend->writeOptimised(buffer.colorForPostion(y, x), pos.x, pos.y);
+                    bool toSend = deviceBufferSend->writeOptimised(bufferToCopy.colorForPostion(y, x), posRelativeToGrid.x, posRelativeToGrid.y);
                     
-                    if (toSend) {
+                   if (toSend) {
                         //we need to now send.
-                        const int index = pos.x + pos.y * padGridSize.x;
+                        const int index = posRelativeToGrid.x + posRelativeToGrid.y * padGridSize.x;
+                    
                         OGDevice * originalDevice = deviceMap[index].originalDevice;
-                        originalDevice->setFeedback(deviceBufferSend->colorForPostion(y, x), {pos.x - originalDevice->offset.x, pos.y - originalDevice->offset.y} );
-                        
+                        originalDevice->setFeedback(deviceBufferSend->colorForPostion(posRelativeToGrid.y, posRelativeToGrid.x), {posRelativeToGrid.x - originalDevice->offset.x, posRelativeToGrid.y - originalDevice->offset.y} );
+//                    originalDevice->setFeedback(deviceBufferSend->colorForPostion(y, x), {posRelativeToGrid.x, posRelativeToGrid.y} );
+                       
                     }
                     
                 }
             }
         }
+    }
+}
+
+
+void OGDeviceManager::sendMidiMessageMaster (MidiMessage m)
+{
+    if (deviceOutput != nullptr) {
+        deviceOutput->sendMessageNow(m);
     }
 }

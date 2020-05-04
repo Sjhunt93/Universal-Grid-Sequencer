@@ -23,7 +23,7 @@ void MasterClock::run()
     int64 dif = 0;
     
     int bfCounter = 0; //this the counter for keeping track of writing to the buffer.
-    const int screenthreshold = 20;
+    const int screenthreshold = 10;
     while (!threadShouldExit()) {
         
         current = Time::getMillisecondCounterHiRes();

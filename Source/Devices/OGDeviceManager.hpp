@@ -68,6 +68,8 @@ public:
     void collectLFXBuffers (OGSession * session); //this goes through and transfers all session buffers to the master device buffer.
     
     void testSendFeedback (XY pos);
+    
+    void sendMidiMessageMaster (MidiMessage m);
 private:
     std::vector<OGDevice *> devices; //stores devices
     std::vector<Map> deviceMap; //stores device position relative to a pad press.
@@ -81,7 +83,7 @@ private:
 //    LFXBuffer   deviceBufferCollect; //this holds all the data colleced from the session buffers
     //std::unique_ptr<LFXBuffer> deviceBufferSend; //this is the buffer that gets sent, i.e we transfer from collect to send, and only then send the updates.
     LFXBuffer * deviceBufferSend; //this is the buffer that gets sent, i.e we transfer from collect to send, and only then send the
-    
+    std::unique_ptr<MidiOutput> deviceOutput;
     
 };
 

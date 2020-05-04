@@ -21,11 +21,12 @@ public:
     virtual ~OGTestController ();
     
     void messageRecieved (OGDevice::OGInMsg msg);
-    
+    void refresh () {}
     
     XY getMinimumSize () {return {1,1};}
     XY getMaximumSize () {return {-1,-1};}
-    
+    const int getColoursRequired () {return 1;}
+
 private:
     
     

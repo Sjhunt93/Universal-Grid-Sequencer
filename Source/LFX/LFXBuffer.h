@@ -27,7 +27,7 @@ public:
     LFXColor& colorForPostion (const int row, const int column);
     void writeToIndex (LFXColor input, const int index);
     void writeToPosition (LFXColor input, const int row, const int column);
-    void writeToPositionXY (LFXColor input, const int x, const int y, bool blend = true);
+    void writeToPositionXY (LFXColor input, const int x, const int y);
     
     //essentially this checks to see if the colour at the position is already the same.
     //If this returns true we don't need to send any feedback

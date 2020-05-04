@@ -9,6 +9,8 @@
 #include "OGSession.hpp"
 #include "OGController.hpp"
 #include "OGTestController.hpp"
+#include "OGControllerLargeDrumPad.hpp"
+
 
 OGSession::OGSession (OGDeviceManager & dm) : devManager(dm)
 {
@@ -17,7 +19,12 @@ OGSession::OGSession (OGDeviceManager & dm) : devManager(dm)
     auto size = devManager.getPadGridSize();
     controlerMap.resize(size.x * size.y);
     
-    OGTestController * controller = new OGTestController(devManager.getPadGridSize(), {0,0});
+    OGControllerLargeDrumPad * controller = new OGControllerLargeDrumPad({16,16}, {1,1});
+//    OGTestController * controller = new OGTestController({5,5}, {6,6});
+    controller->sendMidiOutput = [this](MidiMessage m)
+    {
+        devManager.sendMidiMessageMaster(m);
+    };
     controllers.push_back(controller);
     buildMap();
     
@@ -30,12 +37,21 @@ OGSession::~OGSession ()
 
 void OGSession::buildMap ()
 {
+    
+    for (auto & m : controlerMap) {
+        m.controller = nullptr;
+    }
+    
     for (int i = 0; i < controllers.size(); i++) {
         
         XY size = controllers[i]->size;
+        XY position = controllers[i]->position;
         for (int x = 0; x < size.x; x++) {
             for (int y = 0; y < size.y; y++) {
-                const int index = x + y * devManager.getPadGridSize().y;
+                const int xPos = x + position.x;
+                const int yPos = y + position.y;
+                
+                const int index = xPos + yPos * devManager.getPadGridSize().y;
                 controlerMap[index].controller = controllers[i];
                 controlerMap[index].pos = {0,0};
             }
@@ -46,9 +62,6 @@ void OGSession::buildMap ()
 
 void OGSession::messageRecieved (OGDevice::OGInMsg msg)
 {
-    std::cout << "Message in og session! \n";
-    
-    devManager.testSendFeedback(msg.pos);
     
     const int index = msg.pos.x + msg.pos.y * devManager.getPadGridSize().x;
     

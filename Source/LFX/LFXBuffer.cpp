@@ -89,12 +89,12 @@ void LFXBuffer::writeToPosition (LFXColor input, const int row, const int column
 
 //    data[row * totalColums + column] = input;
 }
-void LFXBuffer::writeToPositionXY (LFXColor input, const int x, const int y, bool blend)
+void LFXBuffer::writeToPositionXY (LFXColor input, const int x, const int y)
 {
     jassert(y < totalRows && y >= 0);
     jassert(x < totalColums && x >= 0);
     const int index = y * totalColums + x;
-    data[index] = (blendColours && blend) ? blendRGB(data[index], input) : input;
+    data[index] = (blendColours) ? blendRGB(data[index], input) : input;
 
 //    data[y * totalColums + x] = input;
 }
@@ -152,6 +152,7 @@ void LFXBuffer::operator=(const LFXBuffer& other)
     for (int i = 0; i <dataSize; i++) {
         data[i] = other.data[i];
     }
+    blendColours = other.blendColours;
 }
 
 

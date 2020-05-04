@@ -45,6 +45,7 @@ public:
     const int getTotalControllers ();
     OGController * controllerForIndex (const int index);
     
+    
 private:
     OGDeviceManager & devManager;
     std::vector<Map> controlerMap;
