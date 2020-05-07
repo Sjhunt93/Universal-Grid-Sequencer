@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "OGDevice.hpp"
 #include "LFXBuffer.h"
+#include "LFXFacade.hpp"
 
 class OGController {
 public:
@@ -35,6 +36,11 @@ public:
      
 
      */
+    
+    enum eControllerList {
+        eTest,
+        eDrumLargePad,
+    };
     
     
     enum eModeType {
@@ -75,7 +81,7 @@ public:
     
     
     
-    OGController (XY size, XY position);
+    OGController (XY size, XY position, const eControllerList type);
     virtual ~OGController ();
     void setup (); //this is used to resize through a virtual function so must be called after construction..
     
@@ -110,9 +116,15 @@ public:
     
     void sendMidi (MidiMessage m);
     std::function<void(MidiMessage)> sendMidiOutput; //this will be called from the clock thread.
+    
+    const eControllerList type;
+    
+    
+    static OGController * allocateForType (eControllerList type); //the caller of this function takes ownership of the returned class.
 protected:
 
     LFXBuffer lfxBuffer;
+    LFXFacade bufferHelper;
     std::vector<LFXColor> colorList;
     std::vector<int>      externalControlValues;
 };

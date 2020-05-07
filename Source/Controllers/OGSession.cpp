@@ -10,7 +10,7 @@
 #include "OGController.hpp"
 #include "OGTestController.hpp"
 #include "OGControllerLargeDrumPad.hpp"
-
+#include "OGControllerMediumDrumPad.hpp"
 
 OGSession::OGSession (OGDeviceManager & dm) : devManager(dm)
 {
@@ -19,7 +19,10 @@ OGSession::OGSession (OGDeviceManager & dm) : devManager(dm)
     auto size = devManager.getPadGridSize();
     controlerMap.resize(size.x * size.y);
     
-    OGControllerLargeDrumPad * controller = new OGControllerLargeDrumPad({16,16}, {1,1});
+    //OGControllerLargeDrumPad * controller = new OGControllerLargeDrumPad({16,16}, {1,1});
+    
+    OGControllerMediumDrumPad * controller = new OGControllerMediumDrumPad({8,8}, {1,1});
+    
 //    OGTestController * controller = new OGTestController({5,5}, {6,6});
     controller->sendMidiOutput = [this](MidiMessage m)
     {

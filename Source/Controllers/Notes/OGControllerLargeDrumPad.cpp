@@ -10,7 +10,7 @@
 
 
 
-OGControllerLargeDrumPad::OGControllerLargeDrumPad (XY size, XY position) : OGController(size, position), bufferHelper(lfxBuffer)
+OGControllerLargeDrumPad::OGControllerLargeDrumPad (XY size, XY position) : OGController(size, position, OGController::eControllerList::eDrumLargePad)
 {
     setup();
     setColour(LFXColor(125, 0, 0), 0);
@@ -29,9 +29,7 @@ void OGControllerLargeDrumPad::messageRecieved (OGDevice::OGInMsg msg)
     const int xM = msg.pos.x / 4;
     const int yM = msg.pos.y / 4;
     
-    std::cout << msg.pos.x << " : " << msg.pos.y << "\n";
-    
-    static uint8 drumMap[] = {57,49,51,53,48,47,45,43,36,40,37,39,36,40,42,46};
+//    static uint8 drumMap[] 
 
     
     static uint8 velocityMap[] = {
@@ -44,11 +42,11 @@ void OGControllerLargeDrumPad::messageRecieved (OGDevice::OGInMsg msg)
     int velocityIndex = (msg.pos.x % 4) + ((msg.pos.y  % 4) * 4);
     const uint8 velOut = msg.velocity ? velocityMap[velocityIndex] : 0;
     
-    const int noteIndex = (msg.pos.x / 4) + ((msg.pos.y / 4) * 4);
+    const int noteIndex = (xM) + ((yM) * 4);
     
     //lfxBuffer.wri
     //fix to be eChannel
-    const MidiMessage message = MidiMessage::noteOn((uint8) 1, drumMap[noteIndex], velOut); //stupid (uint8) casts to remove ambigious warning
+    const MidiMessage message = MidiMessage::noteOn((uint8) 1, noteValues[noteIndex], velOut); //stupid (uint8) casts to remove ambigious warning
     
     sendMidi(message);
     
@@ -77,4 +75,9 @@ void OGControllerLargeDrumPad::refresh ()
 const int OGControllerLargeDrumPad::getColoursRequired ()
 {
     return 4;
+}
+
+std::array<uint8, 16> & OGControllerLargeDrumPad::getNoteValues ()
+{
+    return noteValues;
 }

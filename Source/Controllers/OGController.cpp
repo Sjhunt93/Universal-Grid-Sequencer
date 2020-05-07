@@ -9,7 +9,7 @@
 #include "OGController.hpp"
 
 
-OGController::OGController (XY s, XY p) : size(s), position(p), lfxBuffer(size.x, size.y)
+OGController::OGController (XY s, XY p, const eControllerList t) : size(s), position(p), type(t), lfxBuffer(size.x, size.y), bufferHelper(lfxBuffer)
 {
     colorList.resize(1);
     externalControlValues.resize(eExternalCustomStart+36);
@@ -49,5 +49,17 @@ void OGController::setExternalControl (const int index, int value)
 {
     if (index <= externalControlValues.size() && index >= 0) {
         externalControlValues[index] = value;
+    }
+}
+
+/*static*/ OGController * OGController::allocateForType (eControllerList type)
+{
+    switch (type) {
+        case eTest:
+            
+            break;
+            
+        default:
+            break;
     }
 }

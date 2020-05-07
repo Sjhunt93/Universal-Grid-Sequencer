@@ -8,7 +8,7 @@
 
 #include "OGTestController.hpp"
 
-OGTestController::OGTestController (XY size, XY position) : OGController(size, position)
+OGTestController::OGTestController (XY size, XY position) : OGController(size, position, OGController::eControllerList::eTest)
 {
     setup();
     

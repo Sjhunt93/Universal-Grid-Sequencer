@@ -30,20 +30,20 @@ enum RGBIndex {
 typedef enum eRGDeviceColors
 {
     colOff      =   8,
-    colGreen1   =   24,
-    colGreen2   =   40,
-    colGreen3   =   56,
-    colRed1     =   9,
-    colRed2     =   10,
-    colRed3     =   11,
-    colYel1     =   25,
-    colYel2     =   45,
-    colYel3     =   59,
-    colOran1    =   43,
-    colOran2    =   26,
-    colOran3    =   27,
-    colGrenYel  =   57,
-    colGold     =   58,
+    colGreen1   =   24, //0001 1000
+    colGreen2   =   40, //0010 1000
+    colGreen3   =   56, //0011 1000
+    colRed1     =   9,  //0000 1001
+    colRed2     =   10, //0000 1010
+    colRed3     =   11, //0000 1011
+    colYel1     =   25, //0001 1001
+    colYel2     =   41, //0010 1001
+    colYel3     =   59, //0011 1011
+    colOran1    =   43, //0010 1011
+    colOran2    =   26, //0001 1010
+    colOran3    =   27, //0001 1011
+    colGrenYel  =   57, //0011 1001
+    colGold     =   58, //0011 1010
     eRGColorsTOTAL  = 14,
     
 }eRGDeviceColors;
