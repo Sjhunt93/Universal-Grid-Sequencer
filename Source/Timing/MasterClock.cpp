@@ -36,7 +36,7 @@ void MasterClock::run()
         
         current = Time::getMillisecondCounterHiRes();
         dif = current - last;
-        if (dif > 1) { //fire every 1ms.
+        if (dif >= 1) { //fire every 1ms.
             bfCounter++;
             if (bfCounter >= screenthreshold) {
                 bfCounter = 0;

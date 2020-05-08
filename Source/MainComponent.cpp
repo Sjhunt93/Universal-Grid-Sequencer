@@ -50,7 +50,7 @@ MainContentComponent::MainContentComponent() : modelMap({9,9}) , deviceManager({
     
     mClock.addNewClock(120);
     mClock.getClock(0)->addController(session->controllerForIndex(0));
-    mClock.getClock(0)->addController(session->controllerForIndex(1));
+//    mClock.getClock(0)->addController(session->controllerForIndex(1));
     
     mClock.start();
 }

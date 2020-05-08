@@ -24,7 +24,7 @@ void Clock::setBpm (const float _bpm)
 {
     bpm = _bpm;
     const double value = (60.0/ ((double) _bpm)) / 8.0;
-    tickLimit = value;
+    tickLimit = value * 1000;
     currentTick = 0;
     
 }

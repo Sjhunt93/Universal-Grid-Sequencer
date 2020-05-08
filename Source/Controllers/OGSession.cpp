@@ -11,6 +11,7 @@
 #include "OGTestController.hpp"
 #include "OGControllerLargeDrumPad.hpp"
 #include "OGControllerMediumDrumPad.hpp"
+#include "OGControllerSequencerSimple.hpp"
 
 OGSession::OGSession (OGDeviceManager & dm) : devManager(dm)
 {
@@ -23,11 +24,12 @@ OGSession::OGSession (OGDeviceManager & dm) : devManager(dm)
     
 //    OGControllerMediumDrumPad * controller = new OGControllerMediumDrumPad({8,8}, {1,1});
     
-    addNewController(new OGTestController({5,5}, {6,6}));
-    addNewController(new OGTestController({3,3}, {0,0}));
+//    addNewController(new OGTestController({5,5}, {6,6}));
+//    addNewController(new OGTestController({3,3}, {0,0}));
 //    OGTestController * controller = new OGTestController({5,5}, {6,6});
     
-    
+
+    addNewController(new OGControllerSequencerSimple( {16, 16}, {1,1}));
     
 }
 OGSession::~OGSession ()

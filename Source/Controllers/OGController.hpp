@@ -29,7 +29,8 @@ public:
 
      
         these are optional
-        void clockPulse (int _1_4, int _1_8, int _1_16, int _1_32, int _1_64);
+        void clockPulse (int _1_4, int _1_8, int _1_16, int _1_32);
+
         void clockPulse (int ticks);
         const int getNumberOfExternalControls ();
         ExternalControlMessage getDescriptionForExternalControl ();
@@ -40,6 +41,8 @@ public:
     enum eControllerList {
         eTest,
         eDrumLargePad,
+        eSequencer,
+        eSequencerSimple,
     };
     
     

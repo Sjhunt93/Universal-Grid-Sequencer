@@ -35,6 +35,8 @@
 		70294CE524604DE800371ACB /* LFXFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70294CE324604DE800371ACB /* LFXFacade.cpp */; };
 		703406CC246408B6009B0D47 /* OGControllerMediumDrumPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 703406CA246408B6009B0D47 /* OGControllerMediumDrumPad.cpp */; };
 		7060A99E2459BFA1009138BD /* OGDeviceLaunchpad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7060A99C2459BFA1009138BD /* OGDeviceLaunchpad.cpp */; };
+		7090C35A24658621008EE256 /* OGControllerSequencerRoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7090C35824658621008EE256 /* OGControllerSequencerRoot.cpp */; };
+		7090C35D246592A8008EE256 /* OGControllerSequencerSimple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7090C35B246592A8008EE256 /* OGControllerSequencerSimple.cpp */; };
 		70A1F23E2459F8C1001469A0 /* OGDeviceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70A1F23C2459F8C1001469A0 /* OGDeviceManager.cpp */; };
 		70A1F241245A1528001469A0 /* OGSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70A1F23F245A1528001469A0 /* OGSession.cpp */; };
 		70A1F245245A1663001469A0 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70A1F243245A1663001469A0 /* Clock.cpp */; };
@@ -106,6 +108,10 @@
 		703406CB246408B6009B0D47 /* OGControllerMediumDrumPad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerMediumDrumPad.hpp; sourceTree = "<group>"; };
 		7060A99C2459BFA1009138BD /* OGDeviceLaunchpad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGDeviceLaunchpad.cpp; sourceTree = "<group>"; };
 		7060A99D2459BFA1009138BD /* OGDeviceLaunchpad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGDeviceLaunchpad.hpp; sourceTree = "<group>"; };
+		7090C35824658621008EE256 /* OGControllerSequencerRoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGControllerSequencerRoot.cpp; sourceTree = "<group>"; };
+		7090C35924658621008EE256 /* OGControllerSequencerRoot.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerSequencerRoot.hpp; sourceTree = "<group>"; };
+		7090C35B246592A8008EE256 /* OGControllerSequencerSimple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGControllerSequencerSimple.cpp; sourceTree = "<group>"; };
+		7090C35C246592A8008EE256 /* OGControllerSequencerSimple.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerSequencerSimple.hpp; sourceTree = "<group>"; };
 		70A1F23C2459F8C1001469A0 /* OGDeviceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGDeviceManager.cpp; sourceTree = "<group>"; };
 		70A1F23D2459F8C1001469A0 /* OGDeviceManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGDeviceManager.hpp; sourceTree = "<group>"; };
 		70A1F23F245A1528001469A0 /* OGSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGSession.cpp; sourceTree = "<group>"; };
@@ -243,6 +249,7 @@
 		700B1CDD2459AB2E00889AC2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7090C357246585C0008EE256 /* Sequencers */,
 				70294CDF246046DF00371ACB /* Notes */,
 				70A1F23F245A1528001469A0 /* OGSession.cpp */,
 				70A1F240245A1528001469A0 /* OGSession.hpp */,
@@ -329,6 +336,17 @@
 				703406CB246408B6009B0D47 /* OGControllerMediumDrumPad.hpp */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		7090C357246585C0008EE256 /* Sequencers */ = {
+			isa = PBXGroup;
+			children = (
+				7090C35824658621008EE256 /* OGControllerSequencerRoot.cpp */,
+				7090C35924658621008EE256 /* OGControllerSequencerRoot.hpp */,
+				7090C35B246592A8008EE256 /* OGControllerSequencerSimple.cpp */,
+				7090C35C246592A8008EE256 /* OGControllerSequencerSimple.hpp */,
+			);
+			path = Sequencers;
 			sourceTree = "<group>";
 		};
 		70A1F242245A1658001469A0 /* Timing */ = {
@@ -503,6 +521,7 @@
 				70A1F245245A1663001469A0 /* Clock.cpp in Sources */,
 				03CCFA6FF460E7C41904C9B3 /* include_juce_data_structures.mm in Sources */,
 				7013D78D245B25FB002EDCE2 /* InputBuffer.cpp in Sources */,
+				7090C35A24658621008EE256 /* OGControllerSequencerRoot.cpp in Sources */,
 				5E47A923B7E7D56BE83C0A74 /* include_juce_events.mm in Sources */,
 				A1D07535D3BF409DDF312062 /* include_juce_graphics.mm in Sources */,
 				26C3661B67001F16D9585C61 /* include_juce_gui_basics.mm in Sources */,
@@ -512,6 +531,7 @@
 				7AC87965F1D7B0EC9B9BC30A /* include_juce_opengl.mm in Sources */,
 				60E9757BA1F5B3CB4B896A79 /* include_juce_video.mm in Sources */,
 				70294CE2246048F600371ACB /* OGControllerLargeDrumPad.cpp in Sources */,
+				7090C35D246592A8008EE256 /* OGControllerSequencerSimple.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
