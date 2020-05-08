@@ -30,3 +30,12 @@ void OGTestController::messageRecieved (OGDevice::OGInMsg msg)
     
     sendMidi(MidiMessage::noteOn((uint8)1, (msg.pos.y * 16 + msg.pos.x) % 127, (uint8) msg.velocity));
 }
+
+void OGTestController::clockPulse (int _1_4, int _1_8, int _1_16, int _1_32)
+{
+    const int x = arc4random() % size.x;
+    const int y = arc4random() % size.y;
+    const uint8 r = arc4random() % 256;
+    const uint8 g = arc4random() % 256;
+    lfxBuffer.writeToPositionXY({r,g,0}, x, y);
+}

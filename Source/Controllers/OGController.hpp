@@ -89,8 +89,8 @@ public:
     virtual void refresh () = 0;
     
     virtual void messageRecieved (OGDevice::OGInMsg msg) = 0;
-    virtual void clockPulse (int _1_4, int _1_8, int _1_16, int _1_32, int _1_64) {}
-    virtual void clockPulse (int ticks) {}
+    virtual void clockPulse (int _1_4, int _1_8, int _1_16, int _1_32) {}
+    virtual void clockPulseTicks (int ticks) {}
 
     
     //position stuff

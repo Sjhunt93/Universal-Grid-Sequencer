@@ -64,6 +64,24 @@ public:
     
     void createMap ();
     
+    /*
+     The following 2 methods are both called from the masterClock Thread.
+     This ensures that there is both syncronicty between controllers (time based)
+     and concurency and no data races, or read write errors.
+     
+     
+     MIDIThread -> messageRecieved() -> InputBuffer...
+     
+     MasterClockThread -> dispatchBufferToControllers() -> reads from InputBuffer -> messageBufferLocal;
+     MasterClockThread -> messageBufferLocal -> to session. 
+     
+     once in the session callbacks these send messages directly to MIDI out (JUCE handles the trasnfer back to the MIDIThread
+     
+     MasterClockThread -> collectLFXBuffers ()
+     
+     again this just sends LED feedback.
+     
+     */
     void dispatchBufferToControllers (OGSession * sessionToSendToo); //this is called from the main clock thread.
     void collectLFXBuffers (OGSession * session); //this goes through and transfers all session buffers to the master device buffer.
     

@@ -26,6 +26,9 @@ public:
     XY getMinimumSize () {return {1,1};}
     XY getMaximumSize () {return {-1,-1};}
     const int getColoursRequired () {return 1;}
+    
+    
+    void clockPulse (int _1_4, int _1_8, int _1_16, int _1_32);
 
 private:
     

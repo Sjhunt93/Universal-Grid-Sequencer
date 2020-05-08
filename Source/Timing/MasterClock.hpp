@@ -20,7 +20,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include <array>
-
+#include "Clock.hpp"
+#include <map>
 
 class MasterClock : public Thread {
 public:
@@ -28,6 +29,8 @@ public:
     MasterClock ();
     ~MasterClock ();
     
+    
+    void start ();
     void run();
     
     
@@ -35,6 +38,21 @@ public:
     std::function<void()> _1msCallback;
     
     
+    //these must only by called when the thread is stoppped!
+    
+    
+    const int addNewClock (float bpm);
+    const int getTotalClocks ();
+    Clock * getClock (const int index);
+    void deleteClock (const int index);
+    
+    
+
+    
+    
+private:
+//    std::map<int, Clock *> clocks;
+    std::vector<Clock *> listOfClocks;
 };
 
 

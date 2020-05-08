@@ -18,16 +18,7 @@ MainContentComponent::MainContentComponent() : modelMap({9,9}) , deviceManager({
     addAndMakeVisible(t);
     setSize (800, 800);
     
-    auto arr = MidiInput::getDevices();
-    
-    for (auto str : arr) {
-        std::cout << str << "\n";
-    }
-    
-    auto arr2 = MidiOutput::getDevices();
-    for (auto str : arr2) {
-        std::cout << str << "\n";
-    }
+
     
     deviceManager.createNewDevice(OGDeviceManager::eDeviceType::eLaunchpadRG, {0,0}, "Launchpad Mini", "Launchpad Mini");
     deviceManager.deviceAtPosInVector({0,0})->setOrientation(OGDevice::eOrientation::eRotatedLeft);
@@ -56,6 +47,12 @@ MainContentComponent::MainContentComponent() : modelMap({9,9}) , deviceManager({
     {
         deviceManager.dispatchBufferToControllers(session.get());
     };
+    
+    mClock.addNewClock(120);
+    mClock.getClock(0)->addController(session->controllerForIndex(0));
+    mClock.getClock(0)->addController(session->controllerForIndex(1));
+    
+    mClock.start();
 }
 
 MainContentComponent::~MainContentComponent()

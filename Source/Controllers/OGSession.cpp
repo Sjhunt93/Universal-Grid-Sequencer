@@ -21,21 +21,20 @@ OGSession::OGSession (OGDeviceManager & dm) : devManager(dm)
     
     //OGControllerLargeDrumPad * controller = new OGControllerLargeDrumPad({16,16}, {1,1});
     
-    OGControllerMediumDrumPad * controller = new OGControllerMediumDrumPad({8,8}, {1,1});
+//    OGControllerMediumDrumPad * controller = new OGControllerMediumDrumPad({8,8}, {1,1});
     
+    addNewController(new OGTestController({5,5}, {6,6}));
+    addNewController(new OGTestController({3,3}, {0,0}));
 //    OGTestController * controller = new OGTestController({5,5}, {6,6});
-    controller->sendMidiOutput = [this](MidiMessage m)
-    {
-        devManager.sendMidiMessageMaster(m);
-    };
-    controllers.push_back(controller);
-    buildMap();
+    
     
     
 }
 OGSession::~OGSession ()
 {
-    
+    for (int i = 0; i < controllers.size(); i++) {
+        delete controllers[i];
+    }
 }
 
 void OGSession::buildMap ()
@@ -95,4 +94,13 @@ OGController * OGSession::controllerForIndex (const int index)
     return nullptr;
     
     
+}
+void OGSession::addNewController (OGController * controller)
+{
+    controller->sendMidiOutput = [this](MidiMessage m)
+    {
+        devManager.sendMidiMessageMaster(m);
+    };
+    controllers.push_back(controller);
+    buildMap();
 }
