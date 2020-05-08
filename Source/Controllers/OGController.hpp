@@ -117,8 +117,8 @@ public:
     
     LFXBuffer& getLFXBuffer ();
     
-    void sendMidi (MidiMessage m);
-    std::function<void(MidiMessage)> sendMidiOutput; //this will be called from the clock thread.
+    void sendMidi (MidiMessage m, int delay);
+    std::function<void(MidiMessage,int)> sendMidiOutput; //this will be called from the clock thread.
     
     const eControllerList type;
     

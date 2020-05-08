@@ -9,7 +9,13 @@
 #include "MasterClock.hpp"
 MasterClock::MasterClock () : Thread("Master Clock")
 {
-    
+    queSize = 0;
+    que.resize(50);
+    for (auto & ob : que) {
+        ob.isActive = false;
+        ob.delay = 0;
+        ob.start = 0;
+    }
 }
 MasterClock::~MasterClock ()
 {
@@ -60,6 +66,9 @@ void MasterClock::run()
             if (_1msCallback != nullptr) {
                 _1msCallback();
             }
+            if (queSize) {
+                sendAndClearQue();
+            }
             
         }
         
@@ -92,5 +101,34 @@ void MasterClock::deleteClock (const int index)
     if (index >= 0 && index < getTotalClocks()) {
         delete listOfClocks[index];
         listOfClocks[index] = nullptr;
+    }
+}
+void MasterClock::queMidiMessage (MidiMessage msg, int delay)
+{
+    if (delay > 0) {
+        for (int i = 0; i < que.size(); i++) {
+            if (!que[i].isActive) {
+                que[i].delay = delay;
+                que[i].m = msg;
+                que[i].start = Time::getMillisecondCounterHiRes();
+                que[i].isActive = true;
+                queSize++;
+                break;
+                
+            }
+        }
+    }
+}
+void MasterClock::sendAndClearQue ()
+{
+    const int time = Time::getMillisecondCounterHiRes();
+    for (int i = 0; i < que.size(); i++) {
+        if (que[i].isActive) {
+            if (time > (que[i].start + que[i].delay)) {
+                que[i].isActive = false;
+                sendMidiMessage(que[i].m);
+                queSize--;
+            }
+        }
     }
 }

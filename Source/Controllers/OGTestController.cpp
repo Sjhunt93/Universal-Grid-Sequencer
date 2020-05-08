@@ -28,7 +28,7 @@ void OGTestController::messageRecieved (OGDevice::OGInMsg msg)
     
     std::cout << msg.pos.x << " - " << msg.pos.y << "\n";
     
-    sendMidi(MidiMessage::noteOn((uint8)1, (msg.pos.y * 16 + msg.pos.x) % 127, (uint8) msg.velocity));
+    sendMidi(MidiMessage::noteOn((uint8)1, (msg.pos.y * 16 + msg.pos.x) % 127, (uint8) msg.velocity), 0);
 }
 
 void OGTestController::clockPulse (int _1_4, int _1_8, int _1_16, int _1_32)

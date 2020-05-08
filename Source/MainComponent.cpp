@@ -10,10 +10,10 @@
 
 
 //==============================================================================
-MainContentComponent::MainContentComponent() : modelMap({9,9}) , deviceManager({2,2})
+MainContentComponent::MainContentComponent() :  deviceManager({2,2}), modelMap({9,9})
 {
-    pg = new PadGrid(&modelMap);
-    addAndMakeVisible(pg);
+    pg = std::make_unique<PadGrid>(&modelMap);
+    addAndMakeVisible(pg.get());
     
     addAndMakeVisible(t);
     setSize (800, 800);
@@ -37,7 +37,7 @@ MainContentComponent::MainContentComponent() : modelMap({9,9}) , deviceManager({
     
     deviceManager.createMap();
     
-    session = std::make_unique<OGSession>(deviceManager);
+    session = std::make_unique<OGSession>(deviceManager, mClock);
     
     mClock.frameBufferCallback = [this]()
     {
@@ -46,6 +46,11 @@ MainContentComponent::MainContentComponent() : modelMap({9,9}) , deviceManager({
     mClock._1msCallback = [this]()
     {
         deviceManager.dispatchBufferToControllers(session.get());
+    };
+    
+    mClock.sendMidiMessage = [this](MidiMessage m)
+    {
+        deviceManager.sendMidiMessageMaster(m);
     };
     
     mClock.addNewClock(120);

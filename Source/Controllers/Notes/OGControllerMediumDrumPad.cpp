@@ -77,7 +77,7 @@ void OGControllerMediumDrumPad::messageRecieved (OGDevice::OGInMsg msg)
     //fix to be eChannel
     const MidiMessage message = MidiMessage::noteOn((uint8) 1, noteValues[noteIndex], velOut); //stupid (uint8) casts to remove ambigious warning
     
-    sendMidi(message);
+    sendMidi(message, 0);
     
     if (useCustomColours) {
         bufferHelper.drawSquare(xM*2, yM*2, 2, 2,  msg.velocity ? LFXColor(255, 0, 0) : customColours[noteIndex]);

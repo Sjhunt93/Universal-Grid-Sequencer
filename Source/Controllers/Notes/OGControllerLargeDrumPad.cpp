@@ -48,7 +48,7 @@ void OGControllerLargeDrumPad::messageRecieved (OGDevice::OGInMsg msg)
     //fix to be eChannel
     const MidiMessage message = MidiMessage::noteOn((uint8) 1, noteValues[noteIndex], velOut); //stupid (uint8) casts to remove ambigious warning
     
-    sendMidi(message);
+    sendMidi(message, 0);
     
     bufferHelper.drawSquare(xM*4, yM*4, 4, 4,  getColour( msg.velocity ? ((xM+yM) % 2) + 2 : (xM+yM) % 2));
     //lfxBuffer.writeToPositionXY(getColour(3), msg.pos.x, msg.pos.y);

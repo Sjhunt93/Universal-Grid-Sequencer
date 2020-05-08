@@ -13,7 +13,7 @@
 #include "OGControllerMediumDrumPad.hpp"
 #include "OGControllerSequencerSimple.hpp"
 
-OGSession::OGSession (OGDeviceManager & dm) : devManager(dm)
+OGSession::OGSession (OGDeviceManager & dm, MasterClock & clock) : devManager(dm), mClock(clock)
 {
     devManager.createMap();
     
@@ -99,9 +99,15 @@ OGController * OGSession::controllerForIndex (const int index)
 }
 void OGSession::addNewController (OGController * controller)
 {
-    controller->sendMidiOutput = [this](MidiMessage m)
+    controller->sendMidiOutput = [this](MidiMessage m, int delay)
     {
-        devManager.sendMidiMessageMaster(m);
+        if (delay > 0) {
+            mClock.queMidiMessage(m, delay);
+        }
+        else {
+            devManager.sendMidiMessageMaster(m);
+        }
+        
     };
     controllers.push_back(controller);
     buildMap();

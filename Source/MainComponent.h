@@ -105,14 +105,14 @@ public:
 
     
 private:
-    OGDeviceManager deviceManager;
     MasterClock     mClock;
+    OGDeviceManager deviceManager;
     
     std::unique_ptr<OGSession>    session;
     
     
     GridModelMap    modelMap;
-    ScopedPointer<PadGrid> pg;
+    std::unique_ptr<PadGrid>        pg;
     Thing t;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)

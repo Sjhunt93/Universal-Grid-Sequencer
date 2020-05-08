@@ -27,7 +27,8 @@ public:
     
     
 private:
-    
+
+    void transferSequenceToLFX ();
 };
 
 #endif /* OGControllerSequencerSimple_hpp */

@@ -36,6 +36,7 @@ public:
     
     std::function<void()> frameBufferCallback;
     std::function<void()> _1msCallback;
+    std::function<void(MidiMessage)> sendMidiMessage;
     
     
     //these must only by called when the thread is stoppped!
@@ -46,13 +47,25 @@ public:
     Clock * getClock (const int index);
     void deleteClock (const int index);
     
+    void queMidiMessage (MidiMessage msg, int delay);
     
 
     
     
 private:
+    struct MQue{
+        bool isActive = false;
+        MidiMessage m;
+        int delay;
+        int start;
+    };
 //    std::map<int, Clock *> clocks;
     std::vector<Clock *> listOfClocks;
+    std::vector<MQue> que;
+    
+    int queSize;
+    
+    void sendAndClearQue ();
 };
 
 

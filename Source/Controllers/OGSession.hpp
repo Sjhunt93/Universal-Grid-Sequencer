@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "OGDeviceManager.hpp"
-
+#include "MasterClock.hpp"
 // this class contains the mappings between the device amanger and subsequent controllers.
 
 // you can have many sessions, controller by a session manager.
@@ -36,7 +36,7 @@ public:
         int index;
     };
     
-    OGSession (OGDeviceManager & devManager);
+    OGSession (OGDeviceManager & devManager, MasterClock & mClock);
     ~OGSession ();
     void messageRecieved (OGDevice::OGInMsg msg);
     
@@ -48,6 +48,7 @@ public:
     void addNewController (OGController * controller);
 private:
     OGDeviceManager & devManager;
+    MasterClock & mClock;
     std::vector<Map> controlerMap;
     std::vector<OGController *> controllers;
 };

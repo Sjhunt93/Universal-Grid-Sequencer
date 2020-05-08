@@ -39,10 +39,10 @@ LFXColor OGController::getColour (const int index)
     jassert(index >= 0 && index <= colorList.size());
     return colorList[index];
 }
-void OGController::sendMidi (MidiMessage m)
+void OGController::sendMidi (MidiMessage m, int delay)
 {
     if (sendMidiOutput != nullptr) {
-        sendMidiOutput(m);
+        sendMidiOutput(m, delay);
     }
 }
 void OGController::setExternalControl (const int index, int value)
