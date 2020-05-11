@@ -18,6 +18,7 @@
 #include "OGControllerLargeDrumPad.hpp"
 #include "OGControllerMediumDrumPad.hpp"
 #include "OGControllerSequencerSimple.hpp"
+#include "OGControllerSequencerAutoScale.hpp"
 
 class OGSessionTemplates {
 public:
@@ -72,9 +73,9 @@ public:
         std::unique_ptr<OGSession>    session;
     };
     
-    class Sequencer8 : public Base {
-        
-        Sequencer8 () {
+    class Sequencer2 : public Base {
+    public:
+        Sequencer2 () {
         {
             OGController * cc = new OGControllerSequencerSimple( {16, 4}, {1,1});
             cc->getNoteMap().values[0] = 36;
@@ -103,6 +104,43 @@ public:
             
         }
         
+    };
+    class Sequencer8 : public Base {
+    public:
+        Sequencer8 () {
+            {
+                
+//                const int major[] = {60, 62, 64,65,67,69,71,72};
+                const int major[] = {60, 62, 63, 65,67,68,70,72};
+                for (int i = 0; i < 8; i++) {
+                    OGController * cc = new OGControllerSequencerSimple( {15, 1}, {1,i+1});
+                    cc->getNoteMap().values[0] = major[i];
+                    session->addNewController(cc);
+                    mClock.addNewClock(120+i);
+                    mClock.getClock(i)->addController(session->controllerForIndex(i));
+                }
+                
+                
+            }
+            
+            
+        }
+
+    };
+    class Sequencer16Full : public Base {
+    public:
+        Sequencer16Full ()
+        {
+            OGControllerSequencerAutoScale * scale = new OGControllerSequencerAutoScale({16,16}, {1,1});
+            session->addNewController(scale);
+            mClock.addNewClock(120);
+            mClock.getClock(0)->addController(session->controllerForIndex(0));
+            mClock.start();
+
+
+
+        }
+//
     };
     
 

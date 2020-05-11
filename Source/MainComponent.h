@@ -11,11 +11,8 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PadGrid.h"
 #include "GridModelMap.h"
-#include "OGDeviceLaunchpad.hpp"
-#include "OGDeviceManager.hpp"
+#include "OGSessionTemplates.hpp"
 
-#include "MasterClock.hpp"
-#include "OGSession.hpp"
 
 
 class Thing : public Component, public DragAndDropContainer {
@@ -105,11 +102,9 @@ public:
 
     
 private:
-    MasterClock     mClock;
-    OGDeviceManager deviceManager;
-    
-    std::unique_ptr<OGSession>    session;
-    
+//    OGSessionTemplates::Sequencer8 sequencer8;
+    OGSessionTemplates::Sequencer16Full sequencer8;
+
     
     GridModelMap    modelMap;
     std::unique_ptr<PadGrid>        pg;

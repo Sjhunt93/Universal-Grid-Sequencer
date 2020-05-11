@@ -44,7 +44,7 @@ const int OGControllerSequencerSimple::getColoursRequired ()
 }
 void OGControllerSequencerSimple::clockPulse (int _1_4, int _1_8, int _1_16, int _1_32)
 {
-    std::cout << _1_4 << " : " << _1_8 << " : " << _1_16 << " : " << _1_32 << "\n";
+//    std::cout << _1_4 << " : " << _1_8 << " : " << _1_16 << " : " << _1_32 << "\n";
    if ((_1_32 % 2) == 0) {
         const int oldStep = currentStep;
 

@@ -23,6 +23,14 @@ void OGController::setup (const int noteMapSize)
     colorList.resize(getColoursRequired());
     externalControlValues.resize(getNumberOfExternalControls());
     noteMap.values.resize(1);
+    
+    for (auto & a : externalControlValues) {
+        a = 0;
+    }
+    
+    externalControlValues[eOctave] = 4;
+    
+    
 }
 
 LFXBuffer& OGController::getLFXBuffer ()

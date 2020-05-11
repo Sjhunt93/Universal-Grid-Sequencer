@@ -79,11 +79,14 @@ public:
     };
     
     enum eExternalControlIndexes {
-        eSeqStart,
-        eSeqEnd,
-        eClockStepDivision,
-        eScale,
-        eChannel,
+        eSeqStart, //what step should the sequence start at
+        eSeqEnd, //what step should the sequence end at
+        eClockStepDivision, //how fast should the clock be devided
+        eScale, //what scale should the controller use
+        eChannel, //what channel should the controller send on
+        eOveralp,
+        eOctave, //what octave should the sequence start at
+        eTranpose,
         eExternalCustomStart,
     };
     

@@ -35,6 +35,7 @@
 		70294CE524604DE800371ACB /* LFXFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70294CE324604DE800371ACB /* LFXFacade.cpp */; };
 		703406CC246408B6009B0D47 /* OGControllerMediumDrumPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 703406CA246408B6009B0D47 /* OGControllerMediumDrumPad.cpp */; };
 		703F095B2469A84B004B9C2D /* OGSessionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 703F09592469A84B004B9C2D /* OGSessionTemplates.cpp */; };
+		703F095E2469B0E2004B9C2D /* OGControllerSequencerAutoScale.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 703F095C2469B0E2004B9C2D /* OGControllerSequencerAutoScale.cpp */; };
 		7060A99E2459BFA1009138BD /* OGDeviceLaunchpad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7060A99C2459BFA1009138BD /* OGDeviceLaunchpad.cpp */; };
 		7090C35A24658621008EE256 /* OGControllerSequencerRoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7090C35824658621008EE256 /* OGControllerSequencerRoot.cpp */; };
 		7090C35D246592A8008EE256 /* OGControllerSequencerSimple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7090C35B246592A8008EE256 /* OGControllerSequencerSimple.cpp */; };
@@ -109,6 +110,8 @@
 		703406CB246408B6009B0D47 /* OGControllerMediumDrumPad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerMediumDrumPad.hpp; sourceTree = "<group>"; };
 		703F09592469A84B004B9C2D /* OGSessionTemplates.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGSessionTemplates.cpp; sourceTree = "<group>"; };
 		703F095A2469A84B004B9C2D /* OGSessionTemplates.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGSessionTemplates.hpp; sourceTree = "<group>"; };
+		703F095C2469B0E2004B9C2D /* OGControllerSequencerAutoScale.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGControllerSequencerAutoScale.cpp; sourceTree = "<group>"; };
+		703F095D2469B0E2004B9C2D /* OGControllerSequencerAutoScale.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerSequencerAutoScale.hpp; sourceTree = "<group>"; };
 		7060A99C2459BFA1009138BD /* OGDeviceLaunchpad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGDeviceLaunchpad.cpp; sourceTree = "<group>"; };
 		7060A99D2459BFA1009138BD /* OGDeviceLaunchpad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGDeviceLaunchpad.hpp; sourceTree = "<group>"; };
 		7090C35824658621008EE256 /* OGControllerSequencerRoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGControllerSequencerRoot.cpp; sourceTree = "<group>"; };
@@ -358,6 +361,8 @@
 				7090C35924658621008EE256 /* OGControllerSequencerRoot.hpp */,
 				7090C35B246592A8008EE256 /* OGControllerSequencerSimple.cpp */,
 				7090C35C246592A8008EE256 /* OGControllerSequencerSimple.hpp */,
+				703F095C2469B0E2004B9C2D /* OGControllerSequencerAutoScale.cpp */,
+				703F095D2469B0E2004B9C2D /* OGControllerSequencerAutoScale.hpp */,
 			);
 			path = Sequencers;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7013D78A245B2127002EDCE2 /* LFXColor.cpp in Sources */,
+				703F095E2469B0E2004B9C2D /* OGControllerSequencerAutoScale.cpp in Sources */,
 				70A1F241245A1528001469A0 /* OGSession.cpp in Sources */,
 				700B1CEE2459AB2E00889AC2 /* Pad.cpp in Sources */,
 				70A1F248245A1674001469A0 /* MasterClock.cpp in Sources */,
