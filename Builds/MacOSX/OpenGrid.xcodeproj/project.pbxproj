@@ -34,6 +34,7 @@
 		70294CE2246048F600371ACB /* OGControllerLargeDrumPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70294CE0246048F600371ACB /* OGControllerLargeDrumPad.cpp */; };
 		70294CE524604DE800371ACB /* LFXFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70294CE324604DE800371ACB /* LFXFacade.cpp */; };
 		703406CC246408B6009B0D47 /* OGControllerMediumDrumPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 703406CA246408B6009B0D47 /* OGControllerMediumDrumPad.cpp */; };
+		703F095B2469A84B004B9C2D /* OGSessionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 703F09592469A84B004B9C2D /* OGSessionTemplates.cpp */; };
 		7060A99E2459BFA1009138BD /* OGDeviceLaunchpad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7060A99C2459BFA1009138BD /* OGDeviceLaunchpad.cpp */; };
 		7090C35A24658621008EE256 /* OGControllerSequencerRoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7090C35824658621008EE256 /* OGControllerSequencerRoot.cpp */; };
 		7090C35D246592A8008EE256 /* OGControllerSequencerSimple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7090C35B246592A8008EE256 /* OGControllerSequencerSimple.cpp */; };
@@ -90,10 +91,10 @@
 		700B1CEC2459AB2E00889AC2 /* plan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plan.h; path = ../../Source/plan.h; sourceTree = "<group>"; };
 		700B1CF32459AEB600889AC2 /* OGDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGDevice.cpp; sourceTree = "<group>"; };
 		700B1CF42459AEB600889AC2 /* OGDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGDevice.hpp; sourceTree = "<group>"; };
-		70132FA6245C693400077AC8 /* OGTestController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGTestController.cpp; sourceTree = "<group>"; };
-		70132FA7245C693400077AC8 /* OGTestController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGTestController.hpp; sourceTree = "<group>"; };
-		7013D781245B1910002EDCE2 /* OGController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGController.cpp; sourceTree = "<group>"; };
-		7013D782245B1910002EDCE2 /* OGController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGController.hpp; sourceTree = "<group>"; };
+		70132FA6245C693400077AC8 /* OGTestController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OGTestController.cpp; path = ../OGTestController.cpp; sourceTree = "<group>"; };
+		70132FA7245C693400077AC8 /* OGTestController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OGTestController.hpp; path = ../OGTestController.hpp; sourceTree = "<group>"; };
+		7013D781245B1910002EDCE2 /* OGController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OGController.cpp; path = ../OGController.cpp; sourceTree = "<group>"; };
+		7013D782245B1910002EDCE2 /* OGController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OGController.hpp; path = ../OGController.hpp; sourceTree = "<group>"; };
 		7013D785245B2127002EDCE2 /* LFXBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LFXBuffer.cpp; sourceTree = "<group>"; };
 		7013D786245B2127002EDCE2 /* LFXBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFXBuffer.h; sourceTree = "<group>"; };
 		7013D787245B2127002EDCE2 /* LFXColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LFXColor.cpp; sourceTree = "<group>"; };
@@ -106,6 +107,8 @@
 		70294CE424604DE800371ACB /* LFXFacade.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LFXFacade.hpp; sourceTree = "<group>"; };
 		703406CA246408B6009B0D47 /* OGControllerMediumDrumPad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGControllerMediumDrumPad.cpp; sourceTree = "<group>"; };
 		703406CB246408B6009B0D47 /* OGControllerMediumDrumPad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerMediumDrumPad.hpp; sourceTree = "<group>"; };
+		703F09592469A84B004B9C2D /* OGSessionTemplates.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGSessionTemplates.cpp; sourceTree = "<group>"; };
+		703F095A2469A84B004B9C2D /* OGSessionTemplates.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGSessionTemplates.hpp; sourceTree = "<group>"; };
 		7060A99C2459BFA1009138BD /* OGDeviceLaunchpad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGDeviceLaunchpad.cpp; sourceTree = "<group>"; };
 		7060A99D2459BFA1009138BD /* OGDeviceLaunchpad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGDeviceLaunchpad.hpp; sourceTree = "<group>"; };
 		7090C35824658621008EE256 /* OGControllerSequencerRoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGControllerSequencerRoot.cpp; sourceTree = "<group>"; };
@@ -249,14 +252,13 @@
 		700B1CDD2459AB2E00889AC2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				703F0958246966DD004B9C2D /* Core */,
 				7090C357246585C0008EE256 /* Sequencers */,
 				70294CDF246046DF00371ACB /* Notes */,
 				70A1F23F245A1528001469A0 /* OGSession.cpp */,
 				70A1F240245A1528001469A0 /* OGSession.hpp */,
-				7013D781245B1910002EDCE2 /* OGController.cpp */,
-				7013D782245B1910002EDCE2 /* OGController.hpp */,
-				70132FA6245C693400077AC8 /* OGTestController.cpp */,
-				70132FA7245C693400077AC8 /* OGTestController.hpp */,
+				703F09592469A84B004B9C2D /* OGSessionTemplates.cpp */,
+				703F095A2469A84B004B9C2D /* OGSessionTemplates.hpp */,
 				700B1CDE2459AB2E00889AC2 /* ControllerBase.cpp */,
 				700B1CDF2459AB2E00889AC2 /* ControllerBase.h */,
 			);
@@ -336,6 +338,17 @@
 				703406CB246408B6009B0D47 /* OGControllerMediumDrumPad.hpp */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		703F0958246966DD004B9C2D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7013D781245B1910002EDCE2 /* OGController.cpp */,
+				7013D782245B1910002EDCE2 /* OGController.hpp */,
+				70132FA6245C693400077AC8 /* OGTestController.cpp */,
+				70132FA7245C693400077AC8 /* OGTestController.hpp */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		7090C357246585C0008EE256 /* Sequencers */ = {
@@ -503,6 +516,7 @@
 				7013D783245B1910002EDCE2 /* OGController.cpp in Sources */,
 				700B1CF02459AB2E00889AC2 /* GridModelMap.cpp in Sources */,
 				70132FA8245C693400077AC8 /* OGTestController.cpp in Sources */,
+				703F095B2469A84B004B9C2D /* OGSessionTemplates.cpp in Sources */,
 				90F7B53A89A95A65F64787EC /* MainComponent.cpp in Sources */,
 				703406CC246408B6009B0D47 /* OGControllerMediumDrumPad.cpp in Sources */,
 				58208722D4975EE215ACD216 /* Main.cpp in Sources */,

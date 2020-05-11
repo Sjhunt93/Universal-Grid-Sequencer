@@ -14,6 +14,7 @@ Clock::Clock ()
     currentTick = 0;
     isPlaying = false;
     tickLimit = 1;
+    _32_counter = 0;
 }
 Clock::Clock (const float bpm)
 {
@@ -26,11 +27,13 @@ void Clock::setBpm (const float _bpm)
     const double value = (60.0/ ((double) _bpm)) / 8.0;
     tickLimit = value * 1000;
     currentTick = 0;
-    
+    _32_counter = 0;
 }
 
 void Clock::pulse ()
 {
+    if (!isPlaying) {return;}
+    
     currentTick += 1.0;
     if (currentTick > tickLimit) {
         

@@ -63,6 +63,11 @@ public:
         String name;
         
     };
+    struct ExternalControlDescription {
+        String name;
+        float minValue, maxValue, divisionValue;
+        //division value is simply
+    };
     
     struct GlobalControls {
         
@@ -82,43 +87,79 @@ public:
         eExternalCustomStart,
     };
     
+    struct ControlMessage {
+        XY pos;
+        int value;
+        String cName;
+    };
     
+    /*
+     A note map is used by a controller for determining what each row/step etc is mapped to what note.
+     For example in a step sequencer with 4 rows, you have a 4 element note map that might look like:
+     
+        36, //kick
+        38, //snare
+        42, //hat closed
+        46, //hat open
+     
+     
+     Not every controller needs to use a NoteMap, as some are computed algorithmically
+     
+     this structure is returned below
+     */
+    struct NoteMap {
+        std::vector<int> values;
+        bool transposable;
+    };
     
     OGController (XY size, XY position, const eControllerList type);
     virtual ~OGController ();
-    void setup (); //this is used to resize through a virtual function so must be called after construction..
+    void setup (const int noteMapSize = 1); //this is used to resize through a virtual function so must be called after construction..
     
     
     virtual void refresh () = 0;
     
     virtual void messageRecieved (OGDevice::OGInMsg msg) = 0;
+    virtual void controlMessageRecieved (ControlMessage msg) {}
     virtual void clockPulse (int _1_4, int _1_8, int _1_16, int _1_32) {}
     virtual void clockPulseTicks (int ticks) {}
 
-    
+    // ----------------------------------------------------------------------------------------------------
     //position stuff
     virtual XY getMinimumSize () = 0;
     virtual XY getMaximumSize () = 0;
     const XY size;
     const XY position;
 
+    // ----------------------------------------------------------------------------------------------------
     // Colour functions
     virtual const int getColoursRequired () = 0; //how many colours does this controller require
     void setColour (LFXColor col, const int index);
     LFXColor getColour (const int index);
     
-    
+    // ----------------------------------------------------------------------------------------------------
     // external controls
+#warning THIS NEEDS sorting...
     virtual const int getNumberOfExternalControls () {return eExternalCustomStart;}
     virtual ExternalControlMessage getDescriptionForExternalControl () {return {};}
     void setExternalControl (const int index, int value);
     
     
-    
+    // ----------------------------------------------------------------------------------------------------
     LFXBuffer& getLFXBuffer ();
+    NoteMap & getNoteMap ();
     
-    void sendMidi (MidiMessage m, int delay);
+    
+    // ----------------------------------------------------------------------------------------------------
+    // MIDI
+    
+    void sendMidi (MidiMessage m, int delay); //call this rather than the std::function below, as this function will check that sendMidiOutput is not nullptr!
     std::function<void(MidiMessage,int)> sendMidiOutput; //this will be called from the clock thread.
+    
+
+    void sendControl (ControlMessage control);
+    std::function<void(ControlMessage)> sendControlMessage; //some controllers are able to send control message, i.e. clock start. these are all managed in the session manager..
+    
     
     const eControllerList type;
     
@@ -130,5 +171,8 @@ protected:
     LFXFacade bufferHelper;
     std::vector<LFXColor> colorList;
     std::vector<int>      externalControlValues;
+    
+    void initNoteMap (const int size);
+    NoteMap               noteMap;
 };
 #endif /* OGController_hpp */

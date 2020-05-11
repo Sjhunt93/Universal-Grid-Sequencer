@@ -55,6 +55,7 @@ static const eRGDeviceColors colorsList[] = {colGreen1, colGreen2, colGreen3, co
 struct LFXColor {
     uint8 colorRG; //used for Launchpad Original, Mini, S and Mini MK2
     uint8 colorRGB[3]; //used for Pro and Launchpad RGB. Later will use for Push
+    bool alphaEnabled = true; //disable the alpha so that when this is used in the buffer later on, any buffer transfers are ingnored.
     
     LFXColor ();
     LFXColor (uint8 r, uint8 g, uint8 b);

@@ -50,7 +50,8 @@ public:
     void queMidiMessage (MidiMessage msg, int delay);
     
 
-    
+    void setTransportForAllClocks (Clock::eState state);
+
     
 private:
     struct MQue{

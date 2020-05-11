@@ -9,24 +9,29 @@
 #include "OGController.hpp"
 
 
-OGController::OGController (XY s, XY p, const eControllerList t) : size(s), position(p), type(t), lfxBuffer(size.x, size.y), bufferHelper(lfxBuffer)
+OGController::OGController (XY s, XY p, const eControllerList t) : size(s), position(p), type(t), lfxBuffer(size.y, size.x), bufferHelper(lfxBuffer)
 {
     colorList.resize(1);
-    externalControlValues.resize(eExternalCustomStart+36);
 }
 OGController::~OGController ()
 {
     
 }
 
-void OGController::setup ()
+void OGController::setup (const int noteMapSize)
 {
     colorList.resize(getColoursRequired());
+    externalControlValues.resize(getNumberOfExternalControls());
+    noteMap.values.resize(1);
 }
 
 LFXBuffer& OGController::getLFXBuffer ()
 {
     return lfxBuffer;
+}
+OGController::NoteMap & OGController::getNoteMap ()
+{
+    return noteMap;
 }
 
 
@@ -43,6 +48,12 @@ void OGController::sendMidi (MidiMessage m, int delay)
 {
     if (sendMidiOutput != nullptr) {
         sendMidiOutput(m, delay);
+    }
+}
+void OGController::sendControl (ControlMessage control)
+{
+    if (sendControlMessage != nullptr) {
+        sendControlMessage(control);
     }
 }
 void OGController::setExternalControl (const int index, int value)

@@ -29,7 +29,7 @@ OGSession::OGSession (OGDeviceManager & dm, MasterClock & clock) : devManager(dm
 //    OGTestController * controller = new OGTestController({5,5}, {6,6});
     
 
-    addNewController(new OGControllerSequencerSimple( {16, 16}, {1,1}));
+    
     
 }
 OGSession::~OGSession ()
@@ -67,21 +67,36 @@ void OGSession::buildMap ()
 void OGSession::messageRecieved (OGDevice::OGInMsg msg)
 {
     
-    const int index = msg.pos.x + msg.pos.y * devManager.getPadGridSize().x;
-    
-    if (controlerMap[index].controller != nullptr) {
-        //send on to the controller...
-        msg.pos.x = msg.pos.x - controlerMap[index].controller->position.x;
-        msg.pos.y = msg.pos.y - controlerMap[index].controller->position.y;
-        controlerMap[index].controller->messageRecieved(msg);
+    if (msg.pos.y == 0 && msg.velocity)
+    {
+        if (msg.pos.x == 1) {
+            mClock.setTransportForAllClocks(Clock::ePlay);
+        }
+        else if (msg.pos.x == 2) {
+            mClock.setTransportForAllClocks(Clock::ePause);
+        }
+        else if (msg.pos.x == 3) {
+            mClock.setTransportForAllClocks(Clock::eRestart);
+            for (int i = 0; i < controllers.size(); i++) {
+                OGControllerSequencerRoot * seq = dynamic_cast<OGControllerSequencerRoot *>(controllers[i]);
+                if (seq != nullptr) {
+                    seq->restartSequence();
+                }
+            }
+            //
+        }
+    }
+    else {
+        const int index = msg.pos.x + msg.pos.y * devManager.getPadGridSize().x;
+        
+        if (controlerMap[index].controller != nullptr) {
+            //send on to the controller...
+            msg.pos.x = msg.pos.x - controlerMap[index].controller->position.x;
+            msg.pos.y = msg.pos.y - controlerMap[index].controller->position.y;
+            controlerMap[index].controller->messageRecieved(msg);
+        }
     }
     
-//    devManager.deviceForPadPosition(msg.pos)->setFeedback({}, <#XY position#>)
-    //
-    //
-    //    OGDevice * originalDevice = deviceMap[index].originalDevice;
-    //
-    //    originalDevice->setFeedback({}, {pos.x - originalDevice->offset.x, pos.y - originalDevice->offset.y} );
 }
 
 const int OGSession::getTotalControllers ()
@@ -109,6 +124,16 @@ void OGSession::addNewController (OGController * controller)
         }
         
     };
+    
+    controller->sendControlMessage = [this](OGController::ControlMessage c)
+    {
+        this->sendControlMessages(c);
+    };
+    
     controllers.push_back(controller);
     buildMap();
+}
+void OGSession::sendControlMessages (OGController::ControlMessage)
+{
+    
 }

@@ -7,7 +7,9 @@
 */
 
 #include "MainComponent.h"
-
+#include "OGControllerLargeDrumPad.hpp"
+#include "OGControllerMediumDrumPad.hpp"
+#include "OGControllerSequencerSimple.hpp"
 
 //==============================================================================
 MainContentComponent::MainContentComponent() :  deviceManager({2,2}), modelMap({9,9})
@@ -20,6 +22,8 @@ MainContentComponent::MainContentComponent() :  deviceManager({2,2}), modelMap({
     
 
     
+    //---------------------------------------------------------------------------------------------------------------------------------------
+    //set up the device manager
     deviceManager.createNewDevice(OGDeviceManager::eDeviceType::eLaunchpadRG, {0,0}, "Launchpad Mini", "Launchpad Mini");
     deviceManager.deviceAtPosInVector({0,0})->setOrientation(OGDevice::eOrientation::eRotatedLeft);
     
@@ -36,6 +40,13 @@ MainContentComponent::MainContentComponent() :  deviceManager({2,2}), modelMap({
     deviceManager.deviceAtPosInVector({1,1})->offset = {9,9};
     
     deviceManager.createMap();
+    //---------------------------------------------------------------------------------------------------------------------------------------
+    
+    
+    
+    
+    //---------------------------------------------------------------------------------------------------------------------------------------
+    // set up the session
     
     session = std::make_unique<OGSession>(deviceManager, mClock);
     
@@ -53,11 +64,37 @@ MainContentComponent::MainContentComponent() :  deviceManager({2,2}), modelMap({
         deviceManager.sendMidiMessageMaster(m);
     };
     
+    
+    {
+        OGController * cc = new OGControllerSequencerSimple( {16, 4}, {1,1});
+        cc->getNoteMap().values[0] = 36;
+        cc->getNoteMap().values[1] = 38;
+        cc->getNoteMap().values[2] = 42;
+        cc->getNoteMap().values[3] = 46;
+        session->addNewController(cc );
+    }
+    {
+        OGController * cc = new OGControllerSequencerSimple( {16, 4}, {1,6});
+        cc->getNoteMap().values[0] = 36;
+        cc->getNoteMap().values[1] = 38;
+        cc->getNoteMap().values[2] = 42;
+        cc->getNoteMap().values[3] = 46;
+        session->addNewController(cc );
+    }
+    
+//    session->addNewController(new OGControllerSequencerSimple( {14, 4}, {1,9}));
+    
     mClock.addNewClock(120);
+    mClock.addNewClock(131);
     mClock.getClock(0)->addController(session->controllerForIndex(0));
+    mClock.getClock(1)->addController(session->controllerForIndex(1));
+//    mClock.getClock(0)->addController(session->controllerForIndex(2));
 //    mClock.getClock(0)->addController(session->controllerForIndex(1));
     
     mClock.start();
+    
+    //---------------------------------------------------------------------------------------------------------------------------------------
+
 }
 
 MainContentComponent::~MainContentComponent()

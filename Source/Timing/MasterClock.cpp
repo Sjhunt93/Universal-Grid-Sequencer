@@ -132,3 +132,9 @@ void MasterClock::sendAndClearQue ()
         }
     }
 }
+void MasterClock::setTransportForAllClocks (Clock::eState state)
+{
+    for (auto * c : listOfClocks) {
+        c->setTransport(state);
+    }
+}

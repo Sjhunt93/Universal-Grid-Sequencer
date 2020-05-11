@@ -45,8 +45,11 @@ public:
     const int getTotalControllers ();
     OGController * controllerForIndex (const int index);
     
-    void addNewController (OGController * controller);
+    void addNewController (OGController * controller); // pass a pre-allocaed pointer, this class wil take ownership of it
 private:
+    
+    void sendControlMessages (OGController::ControlMessage);
+    
     OGDeviceManager & devManager;
     MasterClock & mClock;
     std::vector<Map> controlerMap;

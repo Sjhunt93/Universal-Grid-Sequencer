@@ -34,6 +34,7 @@ OGControllerSequencerRoot::OGControllerSequencerRoot (XY size, XY position, eCon
     currentSequence = 0;
     stepStart = 0;
     stepEnd = maxSteps;
+    currentStep = stepEnd-1;
 }
 
 
@@ -41,7 +42,7 @@ OGControllerSequencerRoot::OGControllerSequencerRoot (XY size, XY position, eCon
 
 void OGControllerSequencerRoot::restartSequence ()
 {
-    currentStep = stepStart;
+    currentStep = stepEnd-1;
 }
 void OGControllerSequencerRoot::increment ()
 {
