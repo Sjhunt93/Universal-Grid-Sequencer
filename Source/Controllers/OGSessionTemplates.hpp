@@ -19,6 +19,7 @@
 #include "OGControllerMediumDrumPad.hpp"
 #include "OGControllerSequencerSimple.hpp"
 #include "OGControllerSequencerAutoScale.hpp"
+#include "OGControllerNoteScaleRepeater.hpp"
 
 class OGSessionTemplates {
 public:
@@ -253,6 +254,22 @@ public:
         }
         
     };
+    
+    class NoteScaleRepeaterTester : public Base {
+    public:
+        NoteScaleRepeaterTester ()
+        {
+            OGController * cc = new OGControllerNoteScaleRepeater({16,16}, {1,1});
+            session->addNewController(cc);
+            
+            mClock.start();
+
+        }
+
+
+        
+    };
+
     
     
 

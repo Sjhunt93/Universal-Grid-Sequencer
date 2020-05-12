@@ -31,6 +31,7 @@ void OGController::setup (const int noteMapSize)
     externalControlValues[eOctave] = 4;
     externalControlValues[eRelease] = 300;
     externalControlValues[eStartNote] = 36;
+    externalControlValues[eOveralp] = 4;
     
     
     
@@ -72,6 +73,7 @@ void OGController::setExternalControl (const int index, int value)
     if (index <= externalControlValues.size() && index >= 0) {
         externalControlValues[index] = value;
     }
+    refresh();
 }
 
 /*static*/ OGController * OGController::allocateForType (eControllerList type)

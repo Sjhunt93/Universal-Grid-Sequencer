@@ -20,13 +20,8 @@ OGSession::OGSession (OGDeviceManager & dm, MasterClock & clock) : devManager(dm
     auto size = devManager.getPadGridSize();
     controlerMap.resize(size.x * size.y);
     
-    //OGControllerLargeDrumPad * controller = new OGControllerLargeDrumPad({16,16}, {1,1});
-    
-//    OGControllerMediumDrumPad * controller = new OGControllerMediumDrumPad({8,8}, {1,1});
-    
-//    addNewController(new OGTestController({5,5}, {6,6}));
-//    addNewController(new OGTestController({3,3}, {0,0}));
-//    OGTestController * controller = new OGTestController({5,5}, {6,6});
+
+    overlap = 4;
     
 
     
@@ -85,6 +80,26 @@ void OGSession::messageRecieved (OGDevice::OGInMsg msg)
             }
             //
         }
+        else if (msg.pos.x == 4 || msg.pos.x == 5) {
+            if (msg.pos.x == 4) {
+                overlap--;
+                if (overlap < 1) {
+                    overlap = 1;
+                }
+            }
+            else {
+                overlap++;
+                if (overlap > 12) {
+                    overlap = 12;
+                }
+            }
+            for (int i = 0; i < controllers.size(); i++) {
+                controllers[i]->setExternalControl(OGController::eExternalControlIndexes::eOveralp, overlap);
+                
+            }
+        }
+        
+        
     }
     else {
         const int index = msg.pos.x + msg.pos.y * devManager.getPadGridSize().x;

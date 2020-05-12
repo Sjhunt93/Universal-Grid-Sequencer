@@ -31,7 +31,7 @@ void OGControllerNoteScaleRepeater::messageRecieved (OGDevice::OGInMsg msg)
 //    const int note =
 //    const int scalePosition = msg.pos.x % scaleLen; + y * octave;
     
-    const int index = msg.pos.x + msg.pos.y * size.y;
+    const int index = msg.pos.x + msg.pos.y * size.x;
     const int note = noteMap[index].note;
     if (note >= 0 && note < 128) {
         sendMidi(MidiMessage::noteOn(1, (uint8)note, (uint8)msg.velocity), 0);
@@ -49,7 +49,7 @@ void OGControllerNoteScaleRepeater::messageRecieved (OGDevice::OGInMsg msg)
                     lfxBuffer.writeToPositionXY(getColour(1), msg.pos.x, msg.pos.y);
                 }
                 else {
-                    lfxBuffer.writeToPositionXY({}, msg.pos.x, msg.pos.y);
+                    lfxBuffer.writeToPositionXY({0,0,0}, msg.pos.x, msg.pos.y);
                 }
             }
             
@@ -75,6 +75,7 @@ void OGControllerNoteScaleRepeater::refresh ()
     uint8 localLen = 0;
     pointToScale(scale, &localScalePtr, &localLen);
     
+    LFXBuffer::clearBuffer(lfxBuffer);
     
     auto checkScale = [&](int note) -> bool
     {
@@ -94,22 +95,23 @@ void OGControllerNoteScaleRepeater::refresh ()
         
         for (int x = 0; x < size.x; x++) {
             const int writeY = (size.y-1) - y;
-            const int index = writeY * size.x + x;
+            const int index = (writeY * size.x) + x;
+            const int note = startNote+x;
             
-            noteMap[index].note = startNote+x;
-            noteMap[index].isInScale = checkScale(noteMap[index].note);
+            noteMap[index].note = note;
+            noteMap[index].isInScale = checkScale(note);
             
-            if (noteMap[index].note >= 0 && noteMap[index].note < 128) {
-                if (noteMap[index].note % 12 == 0) {
-                    lfxBuffer.writeToPositionXY(getColour(0), x, y);
+            if (note >= 0 && note < 128) {
+                if (note % 12 == 0) {
+                    lfxBuffer.writeToPositionXY(getColour(0), x, writeY);
                 }
                 else {
                     
                     if (noteMap[index].isInScale) {
-                        lfxBuffer.writeToPositionXY(getColour(1), x, y);
+                        lfxBuffer.writeToPositionXY(getColour(1), x, writeY);
                     }
                     else {
-                        lfxBuffer.writeToPositionXY({}, x, y);
+                        lfxBuffer.writeToPositionXY({0,0,0}, x, writeY);
                     }
                 }
             }

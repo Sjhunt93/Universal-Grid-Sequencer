@@ -24,6 +24,13 @@ class OGController;
 class OGSession {
 public:
     
+    enum eSpecialControls {
+        eGlobalClock,
+        eGlobalResync,
+        eOverlapPlus,
+        eOverlapMinus,
+    };
+    
     struct Map {
         Map ()
         {
@@ -35,6 +42,20 @@ public:
         XY pos;
         int index;
     };
+    
+    struct OverideControl {
+//        std::vector<OGController *> controllers;
+        int index; //use -1 for all.
+        int value;
+        int special;
+    };
+    
+    
+    /*
+     We need somethign like an internal control message system:
+     i.e. adjust tempo.
+     
+     */
     
     OGSession (OGDeviceManager & devManager, MasterClock & mClock);
     ~OGSession ();
@@ -54,6 +75,7 @@ private:
     MasterClock & mClock;
     std::vector<Map> controlerMap;
     std::vector<OGController *> controllers;
+    int overlap;
 };
 
 #endif /* OGSession_hpp */
