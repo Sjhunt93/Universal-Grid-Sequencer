@@ -33,6 +33,7 @@
 		7013D78D245B25FB002EDCE2 /* InputBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7013D78B245B25FB002EDCE2 /* InputBuffer.cpp */; };
 		70294CE2246048F600371ACB /* OGControllerLargeDrumPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70294CE0246048F600371ACB /* OGControllerLargeDrumPad.cpp */; };
 		70294CE524604DE800371ACB /* LFXFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70294CE324604DE800371ACB /* LFXFacade.cpp */; };
+		702A3141246AC89100D2699C /* OGControllerNoteScaleRepeater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 702A313F246AC89100D2699C /* OGControllerNoteScaleRepeater.cpp */; };
 		703406CC246408B6009B0D47 /* OGControllerMediumDrumPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 703406CA246408B6009B0D47 /* OGControllerMediumDrumPad.cpp */; };
 		703F095B2469A84B004B9C2D /* OGSessionTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 703F09592469A84B004B9C2D /* OGSessionTemplates.cpp */; };
 		703F095E2469B0E2004B9C2D /* OGControllerSequencerAutoScale.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 703F095C2469B0E2004B9C2D /* OGControllerSequencerAutoScale.cpp */; };
@@ -106,6 +107,8 @@
 		70294CE1246048F600371ACB /* OGControllerLargeDrumPad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerLargeDrumPad.hpp; sourceTree = "<group>"; };
 		70294CE324604DE800371ACB /* LFXFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LFXFacade.cpp; sourceTree = "<group>"; };
 		70294CE424604DE800371ACB /* LFXFacade.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LFXFacade.hpp; sourceTree = "<group>"; };
+		702A313F246AC89100D2699C /* OGControllerNoteScaleRepeater.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGControllerNoteScaleRepeater.cpp; sourceTree = "<group>"; };
+		702A3140246AC89100D2699C /* OGControllerNoteScaleRepeater.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerNoteScaleRepeater.hpp; sourceTree = "<group>"; };
 		703406CA246408B6009B0D47 /* OGControllerMediumDrumPad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGControllerMediumDrumPad.cpp; sourceTree = "<group>"; };
 		703406CB246408B6009B0D47 /* OGControllerMediumDrumPad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerMediumDrumPad.hpp; sourceTree = "<group>"; };
 		703F09592469A84B004B9C2D /* OGSessionTemplates.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGSessionTemplates.cpp; sourceTree = "<group>"; };
@@ -339,6 +342,8 @@
 				70294CE1246048F600371ACB /* OGControllerLargeDrumPad.hpp */,
 				703406CA246408B6009B0D47 /* OGControllerMediumDrumPad.cpp */,
 				703406CB246408B6009B0D47 /* OGControllerMediumDrumPad.hpp */,
+				702A313F246AC89100D2699C /* OGControllerNoteScaleRepeater.cpp */,
+				702A3140246AC89100D2699C /* OGControllerNoteScaleRepeater.hpp */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 				A53C840DECB1826AA6BBAA47 /* include_juce_core.mm in Sources */,
 				FF695B18F06BD81DDFEBF328 /* include_juce_cryptography.mm in Sources */,
 				70A1F23E2459F8C1001469A0 /* OGDeviceManager.cpp in Sources */,
+				702A3141246AC89100D2699C /* OGControllerNoteScaleRepeater.cpp in Sources */,
 				70A1F245245A1663001469A0 /* Clock.cpp in Sources */,
 				03CCFA6FF460E7C41904C9B3 /* include_juce_data_structures.mm in Sources */,
 				7013D78D245B25FB002EDCE2 /* InputBuffer.cpp in Sources */,

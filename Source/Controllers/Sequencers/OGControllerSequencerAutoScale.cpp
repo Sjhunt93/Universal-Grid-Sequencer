@@ -45,9 +45,7 @@ const int OGControllerSequencerAutoScale::getColoursRequired ()
 }
 void OGControllerSequencerAutoScale::clockPulse (int _1_4, int _1_8, int _1_16, int _1_32)
 {
-    //    std::cout << _1_4 << " : " << _1_8 << " : " << _1_16 << " : " << _1_32 << "\n";
     if ((_1_32 % 2) == 0) {
-        const int oldStep = currentStep;
         
         increment();
         
@@ -73,7 +71,7 @@ void OGControllerSequencerAutoScale::clockPulse (int _1_4, int _1_8, int _1_16, 
                 const int noteToSend = scaleNote + noteStart;
                 
                 sendMidi(MidiMessage::noteOn((uint8)1, noteToSend, (uint8) 100), 0);
-                sendMidi(MidiMessage::noteOff((uint8)1, noteToSend, (uint8) 0), 300);
+                sendMidi(MidiMessage::noteOff((uint8)1, noteToSend, (uint8) 0), externalControlValues[eRelease]);
                 isSent = true;
                 y = maxVoices-1 - y;
                 

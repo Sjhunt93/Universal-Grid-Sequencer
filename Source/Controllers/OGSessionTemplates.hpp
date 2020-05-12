@@ -120,13 +120,81 @@ public:
                     mClock.getClock(i)->addController(session->controllerForIndex(i));
                 }
                 
-                
+                mClock.start();
+    
             }
             
             
         }
 
     };
+    
+    class Sequencer2_8 : public Base {
+    public:
+        Sequencer2_8 () {
+            {
+                
+                //                const int major[] = {60, 62, 64,65,67,69,71,72};
+                const int notes[] = {64, 66, 71, 73, 74};
+                
+                
+                
+                { // controller top
+                    OGController * cc = new OGControllerSequencerSimple( {12, 5}, {1,1});
+                    for (int i = 0; i < 5; i++) {
+                        cc->getNoteMap().values[i] = notes[i] - 12;
+                    }
+                    session->addNewController(cc);
+                    mClock.addNewClock(120);
+                    mClock.getClock(0)->addController(session->controllerForIndex(0));
+                }
+                { // controller bottom
+                    OGController * cc = new OGControllerSequencerSimple( {12, 5}, {1,9});
+                    for (int i = 0; i < 5; i++) {
+                        cc->getNoteMap().values[i] = notes[i] - 12;
+                    }
+                    session->addNewController(cc);
+
+                    mClock.addNewClock(121);
+                    mClock.getClock(1)->addController(session->controllerForIndex(1));
+                }
+                
+                
+                
+                
+                mClock.start();
+                
+            }
+            
+            
+        }
+        
+    };
+    
+    class Sequencer15 : public Base {
+    public:
+        Sequencer15 () {
+            {
+                
+                //                const int major[] = {60, 62, 64,65,67,69,71,72};
+                const int major[] = {60, 62, 63, 65,67,68,70,72,74,76,77,79,81,83,84};
+                for (int i = 0; i < 15; i++) {
+                    OGController * cc = new OGControllerSequencerSimple( {15, 1}, {1,i+1});
+                    cc->getNoteMap().values[0] = major[i];
+                    session->addNewController(cc);
+                    mClock.addNewClock(120+(i*0.5));
+                    mClock.getClock(i)->addController(session->controllerForIndex(i));
+                }
+                
+                mClock.start();
+                
+            }
+            
+            
+        }
+        
+    };
+    
     class Sequencer16Full : public Base {
     public:
         Sequencer16Full ()
@@ -142,6 +210,50 @@ public:
         }
 //
     };
+    
+    
+    class PolyRhythmTester : public Base {
+    public:
+        PolyRhythmTester () {
+            {
+                
+                const int notes[] = {60, 62, 64,65,67,69,71,72};
+                //const int notes[] = {64, 66, 71, 73, 74};
+                
+                
+                
+                { // controller top
+                    OGController * cc = new OGControllerSequencerSimple( {13, 8}, {1,1});
+                    for (int i = 0; i < 8; i++) {
+                        cc->getNoteMap().values[i] = notes[i];
+                    }
+                    session->addNewController(cc);
+                    mClock.addNewClock(120*(13.0/12.0));
+                    mClock.getClock(0)->addController(session->controllerForIndex(0));
+                }
+                { // controller bottom
+                    OGController * cc = new OGControllerSequencerSimple( {12, 8}, {1,9});
+                    for (int i = 0; i < 8; i++) {
+                        cc->getNoteMap().values[i] = notes[i] - 12;
+                    }
+                    session->addNewController(cc);
+                    
+                    mClock.addNewClock(120);
+                    mClock.getClock(1)->addController(session->controllerForIndex(1));
+                }
+                
+                
+                
+                
+                mClock.start();
+                
+            }
+            
+            
+        }
+        
+    };
+    
     
 
     

@@ -58,7 +58,7 @@ void OGControllerSequencerSimple::clockPulse (int _1_4, int _1_8, int _1_16, int
             const int velocity = getVoiceStepRef().notes[y].velocity;
             if (velocity) {
 //                int noteToSend = ((maxVoices-1)-y) + rootNote;
-                const int noteToSend = noteMap.values[y];
+                const int noteToSend = noteMap.values[(maxVoices-1)-y];
                 sendMidi(MidiMessage::noteOn((uint8)1, noteToSend, (uint8) 100), 0);
                 sendMidi(MidiMessage::noteOff((uint8)1, noteToSend, (uint8) 0), 300);
                 isSent = true;

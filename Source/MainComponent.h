@@ -103,8 +103,10 @@ public:
     
 private:
 //    OGSessionTemplates::Sequencer8 sequencer8;
-    OGSessionTemplates::Sequencer16Full sequencer8;
-
+//    OGSessionTemplates::Sequencer16Full sequencer8;
+//    OGSessionTemplates::Sequencer2_8 sequencer8;
+    
+    OGSessionTemplates::PolyRhythmTester sequencer8;
     
     GridModelMap    modelMap;
     std::unique_ptr<PadGrid>        pg;

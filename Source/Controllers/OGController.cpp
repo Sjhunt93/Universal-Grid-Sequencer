@@ -22,13 +22,16 @@ void OGController::setup (const int noteMapSize)
 {
     colorList.resize(getColoursRequired());
     externalControlValues.resize(getNumberOfExternalControls());
-    noteMap.values.resize(1);
+    noteMap.values.resize(noteMapSize);
     
     for (auto & a : externalControlValues) {
         a = 0;
     }
     
     externalControlValues[eOctave] = 4;
+    externalControlValues[eRelease] = 300;
+    externalControlValues[eStartNote] = 36;
+    
     
     
 }

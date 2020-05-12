@@ -43,6 +43,7 @@ public:
         eDrumLargePad,
         eSequencer,
         eSequencerSimple,
+        eNoteScaleRepeater,
     };
     
     
@@ -84,9 +85,11 @@ public:
         eClockStepDivision, //how fast should the clock be devided
         eScale, //what scale should the controller use
         eChannel, //what channel should the controller send on
+        eStartNote,
         eOveralp,
         eOctave, //what octave should the sequence start at
         eTranpose,
+        eRelease,
         eExternalCustomStart,
     };
     
