@@ -68,13 +68,13 @@ void OGController::sendControl (ControlMessage control)
         sendControlMessage(control);
     }
 }
-void OGController::setExternalControl (const int index, int value)
-{
-    if (index <= externalControlValues.size() && index >= 0) {
-        externalControlValues[index] = value;
-    }
-    refresh();
-}
+//void OGController::setExternalControl (const int index, int value)
+//{
+//    if (index <= externalControlValues.size() && index >= 0) {
+//        externalControlValues[index] = value;
+//    }
+//    refresh();
+//}
 
 /*static*/ OGController * OGController::allocateForType (eControllerList type)
 {
@@ -86,4 +86,28 @@ void OGController::setExternalControl (const int index, int value)
         default:
             break;
     }
+}
+
+void OGController::controlMessageReceivedParent (OGController::ControlMessage msg)
+{
+    
+    if (msg.channel == -1) { //global channel
+        
+    }
+    else { //check the channel matches what the controller is sending.
+        
+    }
+    
+    bool callChild = false;
+    switch (msg.controlNum) {
+        case CMList::elist::eOveralp:
+            externalControlValues[eOveralp] = msg.controlValue;
+            break;
+            
+        default:
+            controlMessageReceivedChild(msg);
+            break;
+    }
+    refresh();
+
 }

@@ -19,7 +19,7 @@ public:
     OGControllerMediumDrumPad (XY size, XY position);
     ~OGControllerMediumDrumPad ();
     
-    void messageRecieved (OGDevice::OGInMsg msg);
+    void messageReceived (OGDevice::OGInMsg msg);
     XY getMinimumSize ();
     XY getMaximumSize ();
     void refresh ();

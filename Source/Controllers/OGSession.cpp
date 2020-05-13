@@ -93,9 +93,12 @@ void OGSession::messageRecieved (OGDevice::OGInMsg msg)
                     overlap = 12;
                 }
             }
+            OGController::ControlMessage cm;
+            cm.channel = -1;
+            cm.controlNum = CMList::elist::eOveralp;
+            cm.controlValue = overlap;
             for (int i = 0; i < controllers.size(); i++) {
-                controllers[i]->setExternalControl(OGController::eExternalControlIndexes::eOveralp, overlap);
-                
+                controllers[i]->controlMessageReceivedParent(cm);
             }
         }
         
@@ -108,7 +111,7 @@ void OGSession::messageRecieved (OGDevice::OGInMsg msg)
             //send on to the controller...
             msg.pos.x = msg.pos.x - controlerMap[index].controller->position.x;
             msg.pos.y = msg.pos.y - controlerMap[index].controller->position.y;
-            controlerMap[index].controller->messageRecieved(msg);
+            controlerMap[index].controller->messageReceived(msg);
         }
     }
     

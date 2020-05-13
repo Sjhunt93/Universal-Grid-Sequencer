@@ -15,7 +15,7 @@ class OGControllerSequencerAutoScale : public OGControllerSequencerRoot {
 public:
     
     OGControllerSequencerAutoScale (XY size, XY position);
-    void messageRecieved (OGDevice::OGInMsg msg) override;
+    void messageReceived (OGDevice::OGInMsg msg) override;
     XY getMinimumSize () override;
     XY getMaximumSize () override;
     void refresh () override;

@@ -10,14 +10,14 @@
 #include "Scales.h"
 
 
-OGControllerSequencerAutoScale::OGControllerSequencerAutoScale (XY size, XY position) : OGControllerSequencerRoot(size, position, OGController::eSequencerSimple, {size.y, size.x, 8})
+OGControllerSequencerAutoScale::OGControllerSequencerAutoScale (XY size, XY position) : OGControllerSequencerRoot(size, position, OGController::eSequencerAutoScale, {size.y, size.x, 8})
 {
     setup(size.y);
     
     setColour ({255, 0, 0}, 0);
     setColour ({0, 255, 0}, 1);
 }
-void OGControllerSequencerAutoScale::messageRecieved (OGDevice::OGInMsg msg)
+void OGControllerSequencerAutoScale::messageReceived (OGDevice::OGInMsg msg)
 {
     if (msg.velocity) {
         toggleStep(getVoiceStepRef(currentSequence, msg.pos.x), msg.pos.y);

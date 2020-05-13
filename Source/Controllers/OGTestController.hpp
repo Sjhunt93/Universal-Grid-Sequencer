@@ -20,7 +20,7 @@ public:
     OGTestController (XY size, XY position);
     virtual ~OGTestController ();
     
-    void messageRecieved (OGDevice::OGInMsg msg);
+    void messageReceived (OGDevice::OGInMsg msg);
     void refresh () {}
     
     XY getMinimumSize () {return {1,1};}

@@ -19,7 +19,7 @@ OGTestController::~OGTestController ()
 {
     
 }
-void OGTestController::messageRecieved (OGDevice::OGInMsg msg)
+void OGTestController::messageReceived (OGDevice::OGInMsg msg)
 {
     
     LFXColor off{0,0,0};

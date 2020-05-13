@@ -16,7 +16,7 @@ OGControllerSequencerSimple::OGControllerSequencerSimple (XY size, XY position) 
     setColour ({255, 0, 0}, 0);
        setColour ({0, 255, 0}, 1);
 }
-void OGControllerSequencerSimple::messageRecieved (OGDevice::OGInMsg msg)
+void OGControllerSequencerSimple::messageReceived (OGDevice::OGInMsg msg)
 {
     if (msg.velocity) {
         toggleStep(getVoiceStepRef(currentSequence, msg.pos.x), msg.pos.y);

@@ -25,7 +25,7 @@ OGControllerNoteScaleRepeater::~OGControllerNoteScaleRepeater ()
     
 }
 
-void OGControllerNoteScaleRepeater::messageRecieved (OGDevice::OGInMsg msg)
+void OGControllerNoteScaleRepeater::messageReceived (OGDevice::OGInMsg msg)
 {
     
 //    const int note =

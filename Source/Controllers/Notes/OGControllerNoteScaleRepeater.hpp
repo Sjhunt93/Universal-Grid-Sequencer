@@ -26,7 +26,7 @@ public:
     OGControllerNoteScaleRepeater (XY size, XY position);
     ~OGControllerNoteScaleRepeater ();
     
-    void messageRecieved (OGDevice::OGInMsg msg);
+    void messageReceived (OGDevice::OGInMsg msg);
     XY getMinimumSize ();
     XY getMaximumSize ();
     void refresh ();

@@ -52,7 +52,7 @@ OGControllerMediumDrumPad::~OGControllerMediumDrumPad ()
     
 }
 
-void OGControllerMediumDrumPad::messageRecieved (OGDevice::OGInMsg msg)
+void OGControllerMediumDrumPad::messageReceived (OGDevice::OGInMsg msg)
 {
     
     const int xM = msg.pos.x / 2;

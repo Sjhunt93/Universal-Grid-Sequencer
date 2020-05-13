@@ -14,6 +14,36 @@
 #include "LFXBuffer.h"
 #include "LFXFacade.hpp"
 
+
+struct CMList {
+    /*
+     This is a list of standard messages
+     Some of these are picked up by the session or device manager as they relate to global settings such as starting or stoping the master clock
+     */
+    enum elist {
+        //int tranpose;
+        eReset = 0,
+        eSessionSwitch,
+        eClockStart,
+        eClockStop,
+        eClockResync,
+        ePageNext,
+        ePagePrevious,
+        eTranposeSemiUp,
+        eTranposeSemiDown,
+        eStepStart,
+        eStepEnd,
+        eTranposeAmount,
+        eCurrentOctave,
+        eStartNote,
+        eOveralp,
+        
+        
+        
+    };
+    
+};
+
 class OGController {
 public:
     
@@ -43,6 +73,7 @@ public:
         eDrumLargePad,
         eSequencer,
         eSequencerSimple,
+        eSequencerAutoScale,
         eNoteScaleRepeater,
     };
     
@@ -60,24 +91,14 @@ public:
         eLive, //is the only mode reciving messages
         eExternal, //has an external register attached
     };
-    struct ExternalControlMessage {
-        String name;
-        
-    };
+
     struct ExternalControlDescription {
         String name;
         float minValue, maxValue, divisionValue;
         //division value is simply
     };
     
-    struct GlobalControls {
-        
-        //whole steps i.e. a range of 0 - 8, will play all steps starting with the first up to the end.
-        int seqStart;
-        int seqEnd;
-        int clockStepDivision;
-        
-    };
+
     
     enum eExternalControlIndexes {
         eSeqStart, //what step should the sequence start at
@@ -93,10 +114,19 @@ public:
         eExternalCustomStart,
     };
     
-    struct ControlMessage {
-        XY pos;
-        int value;
-        String cName;
+    /*
+        Control messages are used internally to send messages between controllers, for example we can have a tranposition controller that sends transpose values to all applicable controllers.
+     
+        There are a list of standard messages in the CMList above.
+     
+     */
+    struct ControlMessage { //this is essentially a wrapped CC type message
+        XY pos; //original position
+        
+        int controlNum; //CC num
+        int controlValue; //CC val
+        int channel;
+
     };
     
     /*
@@ -125,8 +155,12 @@ public:
     
     virtual void refresh () = 0;
     
-    virtual void messageRecieved (OGDevice::OGInMsg msg) = 0;
-    virtual void controlMessageRecieved (ControlMessage msg) {}
+    virtual void messageReceived (OGDevice::OGInMsg msg) = 0;
+    virtual void controlMessageReceivedChild (ControlMessage msg) {}
+    
+    //this is called externall and process default settings before passing the message onto controlMessageReceivedChild
+    void controlMessageReceivedParent (ControlMessage msg);
+    
     virtual void clockPulse (int _1_4, int _1_8, int _1_16, int _1_32) {}
     virtual void clockPulseTicks (int ticks) {}
 
@@ -145,11 +179,18 @@ public:
     
     // ----------------------------------------------------------------------------------------------------
     // external controls
-#warning THIS NEEDS sorting...
-    virtual const int getNumberOfExternalControls () {return eExternalCustomStart;}
-    virtual ExternalControlMessage getDescriptionForExternalControl () {return {};}
-    void setExternalControl (const int index, int value);
+    /*
+     see: std::vector<int>      externalControlValues;
+     All controllers have a range of settings for configuring their behaviour
+     All of these values are arbitarily stored in externalControlValues. Standard settings can be recalled with the eExternalControlIndexes, following on from this an arbitary legnth of custom settings/values.
+     
+     You can set externalControlValues in 2 ways, either though the ControlMessage functions that are loosely coupled, i.e. any controller can send one and all controllers recieve the value
+    */
     
+    virtual const int getNumberOfExternalControls () {return eExternalCustomStart;}
+//    virtual ExternalControlMessage getDescriptionForExternalControl (const int index) {return {};}
+//    void setExternalControl (const int index, int value);
+//    
     
     // ----------------------------------------------------------------------------------------------------
     LFXBuffer& getLFXBuffer ();
@@ -157,7 +198,7 @@ public:
     
     
     // ----------------------------------------------------------------------------------------------------
-    // MIDI
+    // MIDI and messages
     
     void sendMidi (MidiMessage m, int delay); //call this rather than the std::function below, as this function will check that sendMidiOutput is not nullptr!
     std::function<void(MidiMessage,int)> sendMidiOutput; //this will be called from the clock thread.

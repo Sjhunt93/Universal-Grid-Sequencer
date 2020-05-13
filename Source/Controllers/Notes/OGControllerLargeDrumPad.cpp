@@ -24,7 +24,7 @@ OGControllerLargeDrumPad::~OGControllerLargeDrumPad ()
 {
 
 }
-void OGControllerLargeDrumPad::messageRecieved (OGDevice::OGInMsg msg)
+void OGControllerLargeDrumPad::messageReceived (OGDevice::OGInMsg msg)
 {
     const int xM = msg.pos.x / 4;
     const int yM = msg.pos.y / 4;
