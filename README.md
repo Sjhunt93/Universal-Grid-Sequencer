@@ -13,6 +13,11 @@ https://youtu.be/HgJm1vcfojI
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
+# License #
+
+The source code provided here is proteced by two licenses. The source code for the Universal Grid Sequencer (everything under the source folder) is protected by a GNU license. However the JUCE source code is protected by a seperate license, (also partially GNU) https://juce.com/juce-5-license.
+
+
 ### What is this repository for? ###
 
 * Quick summary
