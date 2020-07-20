@@ -34,6 +34,7 @@
 		7015726A246C153D000CBDFC /* OGControllerSettingsToggleSwitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70157268246C153D000CBDFC /* OGControllerSettingsToggleSwitch.cpp */; };
 		7015726D246C1625000CBDFC /* OGControllerSettingsRangeSwitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7015726B246C1625000CBDFC /* OGControllerSettingsRangeSwitch.cpp */; };
 		70157270246C1634000CBDFC /* OGControllerSettingsRoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7015726E246C1634000CBDFC /* OGControllerSettingsRoot.cpp */; };
+		70188722248309D700D3D8C0 /* OGSessionAudioMostlyTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70188720248309D700D3D8C0 /* OGSessionAudioMostlyTemplates.cpp */; };
 		70294CE2246048F600371ACB /* OGControllerLargeDrumPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70294CE0246048F600371ACB /* OGControllerLargeDrumPad.cpp */; };
 		70294CE524604DE800371ACB /* LFXFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70294CE324604DE800371ACB /* LFXFacade.cpp */; };
 		702A3141246AC89100D2699C /* OGControllerNoteScaleRepeater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 702A313F246AC89100D2699C /* OGControllerNoteScaleRepeater.cpp */; };
@@ -112,6 +113,8 @@
 		7015726C246C1625000CBDFC /* OGControllerSettingsRangeSwitch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerSettingsRangeSwitch.hpp; sourceTree = "<group>"; };
 		7015726E246C1634000CBDFC /* OGControllerSettingsRoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGControllerSettingsRoot.cpp; sourceTree = "<group>"; };
 		7015726F246C1634000CBDFC /* OGControllerSettingsRoot.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerSettingsRoot.hpp; sourceTree = "<group>"; };
+		70188720248309D700D3D8C0 /* OGSessionAudioMostlyTemplates.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGSessionAudioMostlyTemplates.cpp; sourceTree = "<group>"; };
+		70188721248309D700D3D8C0 /* OGSessionAudioMostlyTemplates.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGSessionAudioMostlyTemplates.hpp; sourceTree = "<group>"; };
 		70294CE0246048F600371ACB /* OGControllerLargeDrumPad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGControllerLargeDrumPad.cpp; sourceTree = "<group>"; };
 		70294CE1246048F600371ACB /* OGControllerLargeDrumPad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OGControllerLargeDrumPad.hpp; sourceTree = "<group>"; };
 		70294CE324604DE800371ACB /* LFXFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LFXFacade.cpp; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 				70A1F240245A1528001469A0 /* OGSession.hpp */,
 				703F09592469A84B004B9C2D /* OGSessionTemplates.cpp */,
 				703F095A2469A84B004B9C2D /* OGSessionTemplates.hpp */,
+				70188720248309D700D3D8C0 /* OGSessionAudioMostlyTemplates.cpp */,
+				70188721248309D700D3D8C0 /* OGSessionAudioMostlyTemplates.hpp */,
 				700B1CDE2459AB2E00889AC2 /* ControllerBase.cpp */,
 				700B1CDF2459AB2E00889AC2 /* ControllerBase.h */,
 			);
@@ -559,6 +564,7 @@
 				70294CE524604DE800371ACB /* LFXFacade.cpp in Sources */,
 				700B1CED2459AB2E00889AC2 /* ControllerBase.cpp in Sources */,
 				977A3C46A9B6428963FDF54C /* include_juce_audio_basics.mm in Sources */,
+				70188722248309D700D3D8C0 /* OGSessionAudioMostlyTemplates.cpp in Sources */,
 				700B1CEF2459AB2E00889AC2 /* PadGrid.cpp in Sources */,
 				700B1CF52459AEB600889AC2 /* OGDevice.cpp in Sources */,
 				87CF6CE9BA26D51511407915 /* include_juce_audio_devices.mm in Sources */,

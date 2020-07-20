@@ -67,6 +67,8 @@ private:
     int queSize;
     
     void sendAndClearQue ();
+    
+    void calculateSyncPoint ();
 };
 
 

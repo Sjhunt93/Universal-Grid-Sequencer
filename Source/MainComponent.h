@@ -12,7 +12,7 @@
 #include "PadGrid.h"
 #include "GridModelMap.h"
 #include "OGSessionTemplates.hpp"
-
+#include "OGSessionAudioMostlyTemplates.hpp"
 
 
 class Thing : public Component, public DragAndDropContainer {
@@ -108,7 +108,22 @@ private:
     
 //    OGSessionTemplates::PolyRhythmTester sequencer8;
     
-    OGSessionTemplates::NoteScaleRepeaterTester sequencer8;
+//    OGSessionTemplates::NoteScaleRepeaterTester sequencer8;
+    
+    
+//    OGSessionTemplates::AMSequencer2WayPolyrthmicContainer sequencer8;
+//    OGSessionTemplates::AMSequencer3WayPolyrthmicContainer sequencer8;
+    
+    
+    // Audio mostly examples
+//    AMSequencerSimpleDrumSequencer sequencer8;
+    
+    
+    //AMSequencer2WayPolyrthmicContainer sequencer8;
+    AMSequencerPolymeter    sequence8;
+//    AMSequencerPolytempo sequencer8;
+    
+    
     
     GridModelMap    modelMap;
     std::unique_ptr<PadGrid>        pg;

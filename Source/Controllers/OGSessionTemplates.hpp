@@ -74,6 +74,8 @@ public:
         std::unique_ptr<OGSession>    session;
     };
     
+    
+    //two drum step sequencers (4 voice) setup
     class Sequencer2 : public Base {
     public:
         Sequencer2 () {
@@ -106,6 +108,8 @@ public:
         }
         
     };
+    
+    //8 sequencers with 1 voice
     class Sequencer8 : public Base {
     public:
         Sequencer8 () {
@@ -115,7 +119,7 @@ public:
                 const int major[] = {60, 62, 63, 65,67,68,70,72};
                 for (int i = 0; i < 8; i++) {
                     OGController * cc = new OGControllerSequencerSimple( {15, 1}, {1,i+1});
-                    cc->getNoteMap().values[0] = major[i];
+                    cc->getNoteMap().values[0] = major[7-i];
                     session->addNewController(cc);
                     mClock.addNewClock(120+i);
                     mClock.getClock(i)->addController(session->controllerForIndex(i));
@@ -129,16 +133,15 @@ public:
         }
 
     };
-    
+    // steve reich paino phase
     class Sequencer2_8 : public Base {
     public:
         Sequencer2_8 () {
             {
                 
                 //                const int major[] = {60, 62, 64,65,67,69,71,72};
+                
                 const int notes[] = {64, 66, 71, 73, 74};
-                
-                
                 
                 { // controller top
                     OGController * cc = new OGControllerSequencerSimple( {12, 5}, {1,1});
@@ -171,7 +174,7 @@ public:
         }
         
     };
-    
+    // 15 1 step sequencers
     class Sequencer15 : public Base {
     public:
         Sequencer15 () {
@@ -195,7 +198,7 @@ public:
         }
         
     };
-    
+    // a 16 step sequencer.
     class Sequencer16Full : public Base {
     public:
         Sequencer16Full ()
@@ -212,7 +215,7 @@ public:
 //
     };
     
-    
+    // a 16 / 12 polyrhtmic container
     class PolyRhythmTester : public Base {
     public:
         PolyRhythmTester () {
@@ -270,12 +273,67 @@ public:
         
     };
 
-    
-    
 
     
     
-    //    session->addNewController(new OGControllerSequencerSimple( {14, 4}, {1,9}));
+ 
+    class AMSequencer3WayPolyrthmicContainer : public Base {
+    public:
+        AMSequencer3WayPolyrthmicContainer (const int step1, const int step2, const int step3, const float tempo1) {
+            {
+                
+                const int notes[] = {36, 38, 42, 46};
+                
+                
+                const float tempo2 = tempo1 * ((float)step2 / (float)step1);
+                const float tempo3 = tempo1 * ((float)step3 / (float)step1);
+                
+                
+                { // controller top
+                    OGController * cc = new OGControllerSequencerSimple( {step1, 4}, {1,1});
+                    for (int i = 0; i < 4; i++) {
+                        cc->getNoteMap().values[i] = notes[i];
+                    }
+                    session->addNewController(cc);
+                    mClock.addNewClock(tempo1);
+                    mClock.getClock(0)->addController(session->controllerForIndex(0));
+                }
+                
+                { // controller mid
+                    OGController * cc = new OGControllerSequencerSimple( {step2, 3}, {1,5});
+                    for (int i = 0; i < 4; i++) {
+                        cc->getNoteMap().values[i] = notes[i];
+                    }
+                    session->addNewController(cc);
+                    
+                    mClock.addNewClock(tempo2);
+                    mClock.getClock(1)->addController(session->controllerForIndex(1));
+                }
+                
+                { // controller bottom
+                    OGController * cc = new OGControllerSequencerSimple( {step3, 4}, {1,9});
+                    for (int i = 0; i < 4; i++) {
+                        cc->getNoteMap().values[i] = notes[i];
+                    }
+                    session->addNewController(cc);
+                    
+                    mClock.addNewClock(tempo3);
+                    mClock.getClock(2)->addController(session->controllerForIndex(2));
+                }
+                
+                
+                
+                
+                mClock.start();
+                
+            }
+        }
+    };
+
+        
+        // a 16 / 12 polyrhtmic container
+           
+    
     
 
     

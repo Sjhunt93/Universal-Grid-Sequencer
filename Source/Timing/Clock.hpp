@@ -41,6 +41,7 @@ public:
     void setTransport (eState state);
     
     const float getBpm() {return bpm;}
+    const float getTickLimit () {return tickLimit;}
 private:
     ListenerList<OGController> listnerList;
     float currentTick;

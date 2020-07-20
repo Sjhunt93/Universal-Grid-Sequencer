@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "OGControllerMediumDrumPad::messageRecieved (OGDevice::OGInMsg msg)"
+            landmarkName = "OGControllerMediumDrumPad::messageReceived (OGDevice::OGInMsg msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "OGControllerMediumDrumPad::messageRecieved (OGDevice::OGInMsg msg)"
+            landmarkName = "OGControllerMediumDrumPad::messageReceived (OGDevice::OGInMsg msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

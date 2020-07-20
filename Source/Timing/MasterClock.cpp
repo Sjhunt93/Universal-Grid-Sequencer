@@ -83,6 +83,13 @@ void MasterClock::run()
 const int MasterClock::addNewClock (float bpm)
 {
     listOfClocks.push_back(new Clock(bpm));
+    
+//    double tickSync = 1;
+//    for (auto * clock : listOfClocks) {
+//        tickSync = tickSync * clock->getTickLimit();
+//    }
+//    std::cout << "Tick Sync : " << tickSync << "\n";
+    calculateSyncPoint();
     return getTotalClocks();
 }
 const int MasterClock::getTotalClocks ()
@@ -137,4 +144,63 @@ void MasterClock::setTransportForAllClocks (Clock::eState state)
     for (auto * c : listOfClocks) {
         c->setTransport(state);
     }
+}
+void MasterClock::calculateSyncPoint ()
+{
+    
+    
+    if (getTotalClocks() <= 1) {
+        return;
+    }
+    
+    std::vector<double> tickAmounts;
+    
+    auto findSmallest = [&]() -> int {
+        int small = 0;
+        for (int i = 1; i < tickAmounts.size(); i++) {
+            if (tickAmounts[i] < tickAmounts[small]) {
+                small = i;
+            }
+        }
+        return small;
+    };
+    
+    auto comapreAll = [&]() -> bool {
+        double last = tickAmounts[0];
+        bool result = false;
+        for (int i = 1; i < tickAmounts.size(); i++) {
+            double current = tickAmounts[i];
+            if (fabs(last-current) <= 0.01) { //basically everything has to be more-or-less the same.
+                result = true;
+            }
+            else {
+                result = false;
+            }
+            last = current;
+        }
+        return result;
+    };
+    
+    std::vector<double> tickIncrements;
+
+
+    for (auto * clock : listOfClocks) {
+        tickIncrements.push_back(clock->getTickLimit());
+        tickAmounts.push_back(clock->getTickLimit());
+    }
+    
+    for (int i = 0; i < 1000000; i++) {
+        
+        if (comapreAll()) {
+            const float result = tickAmounts[0];
+            std::cout << "resync after: " << i << "pulses, or: " << result / 1000.0 << "seconds \n";
+            return;
+        }
+        
+        const int smallestindex = findSmallest();
+        tickAmounts[smallestindex] += tickIncrements[smallestindex];
+        
+    }
+    std::cout << "No sync for clock count:\n";
+    
 }
