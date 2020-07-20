@@ -1,5 +1,16 @@
 # README #
 
+
+Todo:
+
+Insert links to Audio Mostly
+
+Examples:
+
+https://youtu.be/KHFJPfa38wY
+
+https://youtu.be/HgJm1vcfojI
+
 This README would normally document whatever steps are necessary to get your application up and running.
 
 ### What is this repository for? ###
